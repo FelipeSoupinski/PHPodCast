@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #3F2D2D;
+}
+
+header{
+    width: 100%;
+    background-color: #802828;
+    display: inline-block;
+    margin-right: -4px;
+}
+
+main{
+    width: 100%;
+}
+
+.center{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 170px;
+    height: 78px;
+}
+
+.user-photo{
+    width: 78px;
+    height: 78px;
+    position: absolute;
+    right: 0;
+}
+
+h2:first-of-type{
+    margin-top: 30px;
+    text-align: center;
+}
+
+h2{
+    font-weight: normal;
+    font-family: 'Alegreya Sans', sans-serif;
+    color: #F3F3F3;
+    font-size: 48px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.search{
+    width: 100%;
+    display: inline-block;
+}
+
+.search-bar{
+    border-radius: 10px;
+    background-color: #C4C4C4;
+    box-shadow: -2px 3px 8px 2px #000000;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 50px;
+}
+
+.btn-pesquisar{
+    position: relative;
+    top: 25px;
+    left: 320px;
+    margin-left: 10px;
+    height: 66px;
+    width: 58px;
+}
+
+.field{
+    width: 25%;
+    margin-right: -4px;
+    display: inline-block;
+}
+
+.field img{
+    width: 180px;
+    height: 180px;
+}
+
+.field p{
+    width: 180px;
+    text-align: center;
+    font-size: 21px;
+    color: white;
+    font-family: 'Ubuntu', sans-serif;
+}
