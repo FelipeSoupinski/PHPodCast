@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    color: #FFFFFF;
+}
+body{
+    background-color: #3F2D2D;
+}
+
+header{
+    width: 100%;
+    height: 78px;
+    background-color: #802828;
+    display: inline-block;
+    margin-right: -4px;
+}
+.center{
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 170px;
+    height: 78px;
+}
+.user-photo{
+    width: 78px;
+    height: 78px;
+    position: absolute;
+    right: 0;
+}
+.search{
+    position: relative;
+    bottom: 35px;
+    width: 80%;
+    display: inline-block;
+    margin-right: -4px;
+}
+.centralizer{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.search-bar{
+    -webkit-box-shadow: -4px 5px 4px 5px rgba(0,0,0,0.63); 
+    box-shadow: -4px 5px 4px 5px rgba(0,0,0,0.63);
+    background-color: #C4C4C4;
+    box-shadow: -2px 3px 8px 2px #000000;
+    position: relative;
+    left: 51%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 50px;
+}
+.btn-pesquisar{
+    position: relative;
+    top: 25px;
+    left: 320px;
+    margin-left: 10px;
+    height: 60px;
+    width: 55px;
+}
+.search-bar::-webkit-input-placeholder{
+    text-align: center;
+    color: #3F3C3C;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+}
+.search-bar::-moz-placeholder {
+    text-align: center;
+    color: #3F3C3C;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 22px;
+    
+    font-weight: normal;
+}
+
