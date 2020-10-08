@@ -3,15 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="pesquisa.css">
+    <link rel="stylesheet" href="./Assets/css/pesquisa.css">
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"/>
     <title>Pesquisar Podcast</title>
 </head>
 <body>
     <header>
-        <a href=""><img src="./Assets/contents/logo-sem-fundo.png" class="logo" alt="logo PHPodCast"/></a>
-        <img src="./Assets/contents/user.png" class="user-photo" alt="foto do perfil"/>
+         <div class="item-header1">
+             <a href="./index.html"><img src="./Assets/contents/logo-sem-fundo.png" class="logo" alt="logo PHPodCast"/></a>
+         </div><!--item-header1--> 
+         
+         <div class="item-header2">
+            <div class="dropdown">
+                <img src="./Assets/contents/user.png" class="user-photo" alt="foto do perfil"/>
+                <div class="dropdown-content">
+                  <a href="./configuracoes.html">Configurações</a>
+                  <a href="./meucanal.html">Meu canal</a>
+                  <a href="./login.html">Sair</a>
+                </div>
+              </div>
+         </div><!--item-header2--> 
     </header>
 
     <main>
@@ -55,7 +67,7 @@
                     <a href="#"><img src="./Assets/contents/resumocast.png" alt="resumocast"></a>
                     <p>Resumo Cast</p>
                 </div>
-                <div class="field">
+                <div class="field special">
                     <a href="#"><img src="./Assets/contents/nao-ouvo.jpeg" alt="nao-ouvo-podcast"></a>
                     <p>Não Ouvo Podcasts</p>
                 </div>

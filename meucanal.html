@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="meucanal.css">
+    <link rel="stylesheet" href="./Assets/css/meucanal.css">
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
@@ -11,12 +11,25 @@
 </head>
 <body>
     <header>
-        <a href=""><img src="./Assets/contents/logo-sem-fundo.png" class="logo" alt="logo PHPodCast"/></a>
+        <div class="item-header1">
+            <a href="./index.html"><img src="./Assets/contents/logo-sem-fundo.png" class="logo" alt="logo PHPodCast"/></a>
+        </div><!--item-header1--> 
+        
         <div class="search">
             <input type="search" placeholder="Pesquise um podcast" class="search-bar"/>
-            <a href=""><img class="btn-pesquisar" src="./Assets/contents/lupa.png" alt="pesquisar"/></a>
+            <a href="./pesquisa.html"><img class="btn-pesquisar" src="./Assets/contents/lupa.png" alt="pesquisar"/></a>
         </div>
-        <img src="./Assets/contents/user.png" class="user-photo" alt="foto do perfil"/>
+
+        <div class="item-header2">
+           <div class="dropdown">
+               <img src="./Assets/contents/user.png" class="user-photo" alt="foto do perfil"/>
+               <div class="dropdown-content">
+                 <a href="./configuracoes.html">Configurações</a>
+                 <a href="./meucanal.html">Meu canal</a>
+                 <a href="./login.html">Sair</a>
+               </div>
+             </div>
+        </div><!--item-header2--> 
     </header>
 
     <main>
@@ -32,7 +45,6 @@
                 </div>
 
                 <img src="./Assets/contents/podcast-img-3.jpg" alt="logo-podcast">
-
             </div>
 
             <div class="group-links">
@@ -41,7 +53,7 @@
                     <span>Add novo Podcast</span>
                 </a>
 
-                <a href="" class="img-p-btn right">
+                <a href="./estatisticas.html" class="img-p-btn right">
                     <img src="./Assets/contents/view.png" alt="ver-estatisticas"/>
                     <span>Ver estatísticas</span>
                 </a>    

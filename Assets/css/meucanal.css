@@ -10,22 +10,50 @@ body{
     background-color: #3F2D2D;
 }
 
+
 header{
-    width: 100%;
-    height: 78px;
+    height: 82px;
     background-color: #802828;
-    display: inline-block;
-    margin-right: -4px;
+    position: relative;
 }
 
-main{
-    width: 100%;
+.item-header1{
+    z-index: 1;
+    position: absolute;
+    top: 2px;
+    left: 5px;
 }
 
-.center{
-    width: 80%;
-    max-width: 1000px;
-    margin: 0 auto;
+.item-header2{
+    z-index: 1;
+    position: absolute;
+    top: 2px;
+    right: 100px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #FFFFFF;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.dropdown-content a {
+    color: rgb(27, 28, 29);
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover{
+    background-color: rgb(171, 177, 184);
 }
 
 .logo{
@@ -36,8 +64,12 @@ main{
 .user-photo{
     width: 78px;
     height: 78px;
-    position: absolute;
-    right: 0;
+}
+
+.center{
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
 }
 
 .centralizer{
@@ -64,31 +96,26 @@ h2{
 
 .search{
     position: relative;
-    bottom: 35px;
-    width: 80%;
-    display: inline-block;
-    margin-right: -4px;
+    bottom: 20px;
+    z-index: 0;
+    margin-left: 20px;
+    text-align: center;
 }
 
 .search-bar{
-    -webkit-box-shadow: -4px 5px 4px 5px rgba(0,0,0,0.63); 
-    box-shadow: -4px 5px 4px 5px rgba(0,0,0,0.63);
+    border-radius: 10px;
     background-color: #C4C4C4;
     box-shadow: -2px 3px 8px 2px #000000;
-    position: relative;
-    left: 51%;
-    transform: translateX(-50%);
     width: 60%;
     height: 50px;
 }
 
 .btn-pesquisar{
     position: relative;
-    top: 25px;
-    left: 320px;
-    margin-left: 10px;
-    height: 60px;
-    width: 55px;
+    top: 30px;
+    height: 66px;
+    width: 58px;
+    margin-left: 20px;
 }
 
 .search-bar::-webkit-input-placeholder{
@@ -110,7 +137,6 @@ h2{
     margin-top: 40px;
     width: 100%;
     display: flex;
-    
 }
 
 .text-description{
@@ -143,7 +169,9 @@ h2{
     border-radius: 10px;
     margin-top: 10px;
     margin-left: 20px;
-    width: 30%;
+    height: 300px;
+    width: 300px;
+
 }
 
 .group-links{
@@ -157,7 +185,7 @@ h2{
 
 .right{
     position: relative;
-    left: 20%;
+    left: 200px;
 }
 
 
@@ -204,3 +232,64 @@ h2{
     margin-bottom: 50px;
 }
 
+@media screen and (max-width:1280px){
+    header{
+        text-align: center;
+        height: 164px;
+    }
+
+    .item-header1{
+        position: static;
+    }
+
+    .item-header2{
+        right: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+@media screen and (max-width:1048px){
+    .img-p-btn{
+        display: block;
+    }
+
+    .img-p-btn span{
+        line-height: 60px;
+    }
+
+    .right{
+        position: static;
+    }
+}
+
+@media screen and (max-width: 810px){
+    header{
+        text-align: initial;
+        height: 246px;
+    }
+
+    .search{
+        text-align: initial;
+    }
+
+    .item-header1{
+        position: static;
+    }
+
+    .description{
+        display: block;
+    }
+}
+
+@media screen and (max-width: 580px){
+    .search{
+        display: block;
+    }
+
+    .item-header2{
+        position: relative;
+        right: -5px;
+        top: 35px;
+    }
+}
