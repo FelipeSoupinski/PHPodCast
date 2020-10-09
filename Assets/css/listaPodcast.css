@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    color: #FFFFFF;
+}
+
+body {
+    margin: 0;
+    background-color: #3F2D2D !important;
+    overflow-x: hidden;
+}
+
+.header-est {
+    height: 90px;
+    width: calc(100% - 1px);
+    background: #802828;
+    border: 1px solid #000000;
+}
+
+.logo {
+    width: 170px;
+    height: 86px;
+}
+
+.user-img {
+    width: 78px;
+    height: 78px;
+    float: right;
+    padding: 6px 80px 0 0;
+    box-sizing: initial;
+}
+
+.search-bar {
+    border-radius: 5px;
+    background-color: #C4C4C4;
+    box-shadow: -2px 3px 8px 2px #000000;
+    width: 50%;
+    height: 30px;
+    margin-left: 12%;
+    text-align: center;
+    color: #000;
+    font-family: Ubuntu;
+}
+
+.btn-pesquisa {
+    height: 66px;
+    width: 58px;
+}
+
+#infoPadrao {
+    width: 55%;
+    height: 500px;
+    margin-left: 23%;
+    position: relative;
+}
+
+h3 {
+    font-family: Ubuntu;
+    font-size: 25px;
+    text-decoration: underline;
+    text-decoration-color: #C4C4C4;
+}
+
+h2 {
+    font-family: Ubuntu;
+    font-size: 20px;
+}
+
+#imgPerfil {
+    width: 130px;
+    height: 130px;
+    margin-left: 100%;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+#listaPodCast {
+    list-style-type: none;
+}
+
+#titlePod {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+#descPod {
+    font-size: 80%;
+}
+
+#botaoPlayHoraMin {
+    height: 45px;
+    width: 190px;
+    border-radius: 25px;
+    position: relative;
+    background-color: #C4C4C4;
+    text-align: center
+}
+
+#imgBotaoPlay {
+    width: 40px;
+    width: 40px;
+    position: absolute;
+    top: 3px;
+    left: 10px;
+}
+
+#hora {
+    color: black;
+}
+
+#botaoPlayHora {
+    height: 45px;
+    width: 150px;
+    border-radius: 25px;
+    position: relative;
+    background-color: #C4C4C4;
+    text-align: center
+}
