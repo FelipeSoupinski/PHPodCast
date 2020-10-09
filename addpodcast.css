@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    color: #FFFFFF;
+}
+body{
+    background-color: #3F2D2D;
+}
+main{
+    background: url("./Assets/contents/podcast-img-1\ 1.png");
+    rgba(0, 0, 0, 0.4);
+}
+
+header{
+    width: 100%;
+    height: 78px;
+    background-color: #802828;
+    display: inline-block;
+    margin-right: -4px;
+}
+.center{
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.logo{
+    width: 170px;
+    height: 78px;
+}
+.user-photo{
+    width: 78px;
+    height: 78px;
+    position: absolute;
+    right: 0;
+}
+.search{
+    position: relative;
+    bottom: 35px;
+    width: 80%;
+    display: inline-block;
+    margin-right: -4px;
+}
+.centralizer{
+    margin-top: 30px;
+    text-align: center;
+}
+
+.search-bar{
+    -webkit-box-shadow: -4px 5px 4px 5px rgba(0,0,0,0.63); 
+    box-shadow: -4px 5px 4px 5px rgba(0,0,0,0.63);
+    background-color: #C4C4C4;
+    box-shadow: -2px 3px 8px 2px #000000;
+    position: relative;
+    left: 49%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 50px;
+}
+.btn-pesquisar{
+    position: relative;
+    top: 25px;
+    left: 320px;
+    margin-left: 10px;
+    height: 60px;
+    width: 55px;
+}
+.search-bar::-webkit-input-placeholder{
+    text-align: center;
+    color: #3F3C3C;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 22px;
+    font-weight: normal;
+}
+.search-bar::-moz-placeholder {
+    text-align: center;
+    color: #3F3C3C;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 22px;
+    
+    font-weight: normal;
+}
+.adicionarpodcast{
+    text-align: center;
+    color: white;
+    font-family: 'Alegreya Sans', sans-serif;
+    font-size: 36px;
+  
+}
+.linha-horizontal {
+    width: 500px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    border: 1px solid #fff;
+}
+.titulo{
+    margin-top: 2%;
+    margin-left: 25%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 28px;
+    color: #fff;
+}
+#retangulo1{
+    border-radius: 10px;
+    display: inline-block;
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 0px;
+    width:590px;
+    height:40px;
+    background:#C4C4C4;
+}
+.descricao{
+    margin-top: 4%;
+    margin-left: 21.5%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 28px;
+    color: #fff;
+}
+#retangulo2{
+    border-radius: 10px;
+    display: inline-block;
+    position: absolute;
+    margin-left: 20px;
+    margin-top: 0px;
+    width:550px;
+    height:100px;
+    background:#C4C4C4;
+}
+.imagem{
+    margin-top: 90px;
+    margin-left: 17.3%;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 28px;
+    color: #fff;
+}
+.image{
+    border-radius: 10px;
+    position: absolute;
+    margin-left: 50px;
+    width: 200px;
+    height: 150px;
+}
+.BUTTON_XPQ {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 80px;
+    margin-top: 200px;
+    margin-left: 40%;
+    width: 270px;
+    height: 90px;
+    color: #FFFFFF;
+    font-family: Open Sans;
+    font-size: 25px;
+    font-weight: 80;
+    padding: 30px;
+    background-color: #363636;
+    border: solid #FFFFFF 1px;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+ }
+ 
+ .BUTTON_XPQ:hover {
+    border: solid #337FED 1px;
+    background: #1E62D0;
+    background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -webkit-gradient(to bottom, #1E62D0, #3D94F6);
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-decoration: none;
+ }
