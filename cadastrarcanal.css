@@ -93,13 +93,14 @@ header{
     border: 1px solid #fff;
 }
 .nomecanal{
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: 200px;
     font-family: 'Ubuntu', sans-serif;
     font-size: 28px;
     color: #fff;
 }
 #retangulo1{
+    border-radius: 10px;
     display: inline-block;
     position: absolute;
     margin-left: 20px;
@@ -109,6 +110,7 @@ header{
     background:#C4C4C4;
 }
 #retangulo{
+    border-radius: 10px;
     display: inline-block;
     position: absolute;
     margin-left: 89px;
@@ -132,6 +134,7 @@ header{
     color: #fff;
 }
 #retangulo2{
+    border-radius: 10px;
     display: inline-block;
     position: absolute;
     margin-left: 20px;
@@ -148,20 +151,35 @@ header{
     color: #fff;
 }
 .image{
+    border-radius: 10px;
     position: absolute;
     margin-left: 120px;
     width: 200px;
     height: 175px;
 }
+.imagemPodcast{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+.imagemPodcastPosicao{
+    display: inline-block;
+    margin-top:0;
+    position: absolute;
+    margin-left: 67%;
+    margin-top: -10px;
+}
 .BUTTON_XPQ {
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;
-    border-radius: 30px;
+    border-radius: 80px;
     margin-top: 200px;
-    margin-left: 44.5%;
+    margin-left: 40%;
+    width: 270px;
+    height: 90px;
     color: #FFFFFF;
     font-family: Open Sans;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: 80;
     padding: 30px;
     background-color: #363636;
