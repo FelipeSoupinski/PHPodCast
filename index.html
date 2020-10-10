@@ -40,7 +40,9 @@
                     <img src="Assets/img/logo-podcasts/hangar18.webp" alt="logo hangar18">
                 </div>
                 <div class="item">
-                    <img src="Assets/img/logo-podcasts/nerdcast.jpg" alt="logo jovem nerd">
+                    <a href="listaPodcast.html">
+                        <img src="Assets/img/logo-podcasts/nerdcast.jpg" alt="logo jovem nerd">
+                    </a>
                 </div>
                 <div class="item">
                     <img src="Assets/img/logo-podcasts/flow.png" alt="logo flow">
@@ -114,10 +116,11 @@
                     <span id="tempo-atual"></span>
                 </div>
             </div>
+
             <div class="col-sm-4 mt-3">
                 <div class="player-controls">
 
-                    <img src="Assets/img/favorito.png" class="img-favorito" alt="imagem de adicionar aos favoritos">
+                    <img id="add-favoritos" src="Assets/img/favorito.png" class="img-favorito" alt="imagem de adicionar aos favoritos" onclick="attImageFavoritos()">
 
                     <span class="player-prev"><img src="Assets/img/double-arrows-prev.svg" alt="botão de recuar" class="btn-prev"></span>
                     <span class="player-play"><img src="Assets/img/play.svg" alt="botão de play" class="btn-play" onclick="play()"></span>
@@ -125,7 +128,20 @@
                     <span class="player-next"><img src="Assets/img/double-arrows2.svg" alt="botão de avançar" class="btn-next"></span>
                     <!-- <span class="player-stop">Stop</span> -->
 
-                    <img src="Assets/img/btn-velocidade.svg" alt="botão de escolher velocidade" class="btn-velocidade">
+                    <a class="dropdown-toggle user-toggle" id="dropdownMenuVelocidade" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-speed">1.00x</button>
+                    </a>
+                    <div id="dropdown-speed" class="dropdown-menu mr-3" aria-labelledby="dropdownMenuVelocidade">
+                        <div class="dropdown-item" onclick="changeSpeed(3.00)">3.00x</div>
+                        <div class="dropdown-item" onclick="changeSpeed(2.50)">2.50x</div>
+                        <div class="dropdown-item" onclick="changeSpeed(2.00)">2.00x</div>
+                        <div class="dropdown-item" onclick="changeSpeed(1.75)">1.75x</div>
+                        <div class="dropdown-item" onclick="changeSpeed(1.50)">1.50x</div>
+                        <div class="dropdown-item" onclick="changeSpeed(1.25)">1.25x</div>
+                        <div class="dropdown-item" onclick="changeSpeed(1.00)">1.00x</div>
+                        <div class="dropdown-item" onclick="changeSpeed(0.75)">0.75x</div>
+                        <div class="dropdown-item" onclick="changeSpeed(0.50)">0.50x</div>
+                    </div>
 
                 </div>
             </div>

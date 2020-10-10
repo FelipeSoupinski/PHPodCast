@@ -117,3 +117,17 @@ hr {
 .content {
     margin: 0 20vw 0;
 }
+
+.btn-speed {
+    border-radius: 50%;
+    border: black 1px solid;
+    font-size: 13px;
+    width: 55px;
+    height: 55px;
+}
+
+#dropdown-speed {
+    left: -10px !important;
+    min-width: 90px !important;
+    cursor: pointer;
+}

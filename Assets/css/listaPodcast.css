@@ -32,6 +32,18 @@ body {
     box-sizing: initial;
 }
 
+.content-dropdown {
+    padding: 32px 0 0 60px;
+}
+
+.user-toggle {
+    float: right;
+}
+
+.user-toggle::after, ::before {
+    display: none;
+}
+
 .search-bar {
     border-radius: 5px;
     background-color: #C4C4C4;
@@ -118,4 +130,22 @@ h2 {
     position: relative;
     background-color: #C4C4C4;
     text-align: center
+}
+
+.pt-10 {
+    padding-top: 4em;
+}
+
+.btn-speed {
+    border-radius: 50%;
+    border: black 1px solid;
+    font-size: 13px;
+    width: 55px;
+    height: 55px;
+}
+
+#dropdown-speed {
+    left: -10px !important;
+    min-width: 90px !important;
+    cursor: pointer;
 }

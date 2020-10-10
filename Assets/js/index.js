@@ -1,5 +1,3 @@
-var temporizador = null;
-
 function attVolume() {
     document.getElementById('jp_audio_0').volume =document.getElementById('volume-control').value;
 }
@@ -22,7 +20,28 @@ function attTempoAtual() {
 
 function play() {
     showTempoTotal();
-    if(temporizador == null){
-        temporizador = setInterval(attTempoAtual, 1000);
+    temporizador = setInterval(attTempoAtual, 1000);
+}
+
+function changeSpeed(speed){
+    var audio = document.getElementById("jp_audio_0");
+    audio.playbackRate = speed;
+}
+
+$(function(){
+
+    $("#dropdown-speed").on('click', 'div', function(){
+      $(".btn:first-child").text($(this).text());
+      $(".btn:first-child").val($(this).text());
+   });
+
+});
+
+function attImageFavoritos(){
+    var favorito = document.getElementById("add-favoritos");
+    if(favorito.getAttribute('src') == 'Assets/img/favorito.png'){
+        favorito.setAttribute('src', 'Assets/img/favorito_2.png');
+    } else {
+        favorito.setAttribute('src', 'Assets/img/favorito.png');
     }
 }
