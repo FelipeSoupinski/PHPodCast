@@ -11,7 +11,7 @@ body{
 }
 
 main{
-    height: calc(100vh - 90px);
+    height: 100vh;
     background: url("Assets/img/podcast-img-1.png");
 }
 
@@ -22,11 +22,17 @@ header{
     display: inline-block;
     margin-right: -4px;
 }
+
+input {
+    color: black;
+}
+
 .center{
     width: 80%;
     max-width: 1000px;
     margin: 0 auto;
 }
+
 .search{
     position: relative;
     bottom: 35px;
@@ -34,6 +40,7 @@ header{
     display: inline-block;
     margin-right: -4px;
 }
+
 .centralizer{
     margin-top: 30px;
     text-align: center;
