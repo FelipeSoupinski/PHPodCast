@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="Assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="Assets/css/player.css">
     <link rel="stylesheet" href="Assets/css/index.css">
 </head>
 <body>
@@ -95,15 +96,66 @@
                         <img src="Assets/img/logo-podcasts/indo-e-voltando.jpg" alt="logo indo e voltando">
                     </div>
                 </div>
-
             </div>
-           
+
+            <div class="space"></div>
+
+            <div class="row bot-bar">
+                <div class="player-timeline">
+                    <div class="player-timeline-control"></div>
+                </div>
+                <div class="col-sm-1">
+                    <img class="logo-player" src="Assets/img/logo-podcasts/nerdcast.jpg" alt="logo jovem nerd">
+                </div>
+                <div class="col-sm-3">
+                    <div class="player-display">
+                        <span class="player-current-track"></span>
+                    </div>
+                    <div class="tempo-atual">
+                        <span id="tempo-atual"></span>
+                    </div>
+                </div>
+                <div class="col-sm-4 mt-3">
+                    <div class="player-controls">
+
+                        <img src="Assets/img/favorito.png" class="img-favorito" alt="imagem de adicionar aos favoritos">
+
+                        <span class="player-prev"><img src="Assets/img/double-arrows-prev.svg" alt="botão de recuar" class="btn-prev"></span>
+                        <span class="player-play"><img src="Assets/img/play.svg" alt="botão de play" class="btn-play" onclick="play()"></span>
+                        <span class="player-pause"><img src="Assets/img/pause.svg" alt="botão de pause" class="btn-pause"></span>
+                        <span class="player-next"><img src="Assets/img/double-arrows2.svg" alt="botão de avançar" class="btn-next"></span>
+                        <!-- <span class="player-stop">Stop</span> -->
+
+                        <img src="Assets/img/btn-velocidade.svg" alt="botão de escolher velocidade" class="btn-velocidade">
+
+                    </div>
+                </div>
+
+                <div class="col-sm-1">
+                    <img src="Assets/img/btn-volume.svg" class="btn-volume" alt="botão de controle de volume">
+                </div>
+
+                <div class="col-sm-2">
+                    <input id="volume-control" class="volume-control" type="range" id="weight" min="0" value="0.6" max="1" step="0.1" onchange="attVolume()">
+                </div>
+
+                <div class="col-sm-1">
+                    <div class="tempo-total">
+                        <span id="tempo-total"></span>
+                    </div>
+                </div>
+
+                <div class="player"></div>
+            </div>
+ 
         </main>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script src="Assets/js/owl.carousel.min.js"></script>
+    <script src="Assets/js/jplayer/jquery.jplayer.min.js"></script>
+    <script src="Assets/js/player.js"></script>
     <script src="Assets/js/index.js"></script>
     <script>
         $('.owl-carousel').owlCarousel({
