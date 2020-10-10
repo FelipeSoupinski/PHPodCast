@@ -10,9 +10,9 @@ body{
     background-color: #3F2D2D;
 }
 
-main{
+#main-add{
     height: 100vh;
-    background: url("Assets/img/podcast-img-1.png");
+    background: url("../img/podcast-img-1.png");
 }
 
 header{
@@ -83,7 +83,7 @@ input {
 }
 
 #input-arquivo {
-    background-image: url('Assets/img/fone-for-input.png');
+    background-image: url('../img/fone-for-input.png');
     background-repeat: no-repeat;
     background-position: center;
     height: 200px;
