@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $nome
+ * @property string $categoria
  * @property string $descricao
  * @property string $imagem
  * @property int $usuario_id
@@ -31,6 +32,7 @@ class Canai extends Entity
      */
     protected $_accessible = [
         'nome' => true,
+        'categoria' => true,
         'descricao' => true,
         'imagem' => true,
         'usuario_id' => true,

@@ -3,11 +3,11 @@ $(function() {
     var playlist = [{
         artist: 'Krono Remix',
         title: 'Dancin',
-        mp3: '../songs/dancin.mp3'
+        mp3: './songs/dancin.mp3'
     }, {
         artist: 'Twenty one Pilots',
         title: 'Stressed Out',
-        mp3: '../songs/stressedout.mp3'
+        mp3: './songs/stressedout.mp3'
     }];
 
     var currentTrack = 0;

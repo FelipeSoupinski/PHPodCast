@@ -1,32 +1,58 @@
-<?php
-/**
- * @var \App\View\AppView $this
- * @var \App\Model\Entity\Canai $canai
- */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Canais'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Usuarios'), ['controller' => 'Usuarios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Usuario'), ['controller' => 'Usuarios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Episodios'), ['controller' => 'Episodios', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Episodio'), ['controller' => 'Episodios', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Estatisticas'), ['controller' => 'Estatisticas', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Estatistica'), ['controller' => 'Estatisticas', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="canais form large-9 medium-8 columns content">
-    <?= $this->Form->create($canai) ?>
-    <fieldset>
-        <legend><?= __('Add Canai') ?></legend>
-        <?php
-            echo $this->Form->control('nome');
-            echo $this->Form->control('descricao');
-            echo $this->Form->control('imagem');
-            echo $this->Form->control('usuario_id', ['options' => $usuarios]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+<?php $this->layout = 'site' ?>
+
+<?= $this->Html->css('addpodcast.css') ?>
+<?= $this->Html->css('cadastrarcanal.css') ?>
+
+<main>
+    <div class="title-add">Cadastrar Canal</div>
+    <div class="linha-horizontal"></div>
+
+    <?= $this->Form->create($canai, ['type' => 'file']) ?>
+
+        <div class="row mt-4">
+            <div class="col-sm-4">
+                <span class="legend"> Nome do Canal</span>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" class="input-text" name="nome" />
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-sm-4">
+                <span class="legend"> Categoria </span>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" class="input-text" name="categoria" />
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-sm-4">
+                <span class="legend"> Descrição do canal </span>
+            </div>
+            <div class="col-sm-8">
+                <input type="text" class="input-description" name="descricao" />
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-sm-4">
+                <span class="legend"> Imagem </span>
+            </div>
+            <div class="col-sm-5">
+                <input type="file" class="input-imagem form-control" name="imagem" />
+            </div>
+            <div class="col-sm-3 mt-">
+                <?= $this->Html->image('contents/podcast-img-4.jpg', ['class' => 'img-cadastrarcanal']) ?>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-sm text-center">
+                <?= $this->Form->button(__('Confirmar'), ['class' => 'btn-confirm mb-5']) ?>
+            </div>
+        </div>
+
     <?= $this->Form->end() ?>
-</div>
+
+</main>

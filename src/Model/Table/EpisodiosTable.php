@@ -37,6 +37,9 @@ class EpisodiosTable extends Table
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
 
+        $this->addBehavior('UploadRed');
+        $this->addBehavior('DeleteArq');
+
         $this->belongsTo('Canais', [
             'foreignKey' => 'canai_id',
             'joinType' => 'INNER',
@@ -97,4 +100,14 @@ class EpisodiosTable extends Table
 
         return $rules;
     }
+
+    public function getEpisodios($canal_id)
+    {
+        $query = $this->find()
+                      ->select()
+                      ->where(['canai_id' => $canal_id])
+                      ->orderAsc('data');
+        return $query->all();
+    }
+
 }

@@ -67,9 +67,7 @@ body {
 
 #infoPadrao {
     width: 55%;
-    height: 500px;
     margin-left: 23%;
-    position: relative;
 }
 
 h3 {
@@ -85,10 +83,9 @@ h2 {
 }
 
 #imgPerfil {
-    width: 130px;
-    height: 130px;
-    margin-left: 100%;
-    position: absolute;
+    width: 150px;
+    height: 150px;
+    margin-left: 28%;
     top: 0px;
     right: 0px;
 }
@@ -108,7 +105,7 @@ h2 {
 
 #botaoPlayHoraMin {
     height: 45px;
-    width: 190px;
+    width: 60px;
     border-radius: 25px;
     position: relative;
     background-color: #C4C4C4;
@@ -137,7 +134,7 @@ h2 {
 }
 
 .pt-10 {
-    padding-top: 4em;
+    padding-top: 2em;
 }
 
 .btn-speed {

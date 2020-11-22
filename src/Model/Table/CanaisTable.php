@@ -41,6 +41,8 @@ class CanaisTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('UploadRed');
+        $this->addBehavior('DeleteArq');
 
         $this->belongsTo('Usuarios', [
             'foreignKey' => 'usuario_id',
@@ -73,6 +75,12 @@ class CanaisTable extends Table
             ->notEmptyString('nome');
 
         $validator
+            ->scalar('categoria')
+            ->maxLength('categoria', 255)
+            ->requirePresence('categoria', 'create')
+            ->notEmptyString('categoria');
+
+        $validator
             ->scalar('descricao')
             ->maxLength('descricao', 255)
             ->requirePresence('descricao', 'create')
@@ -100,4 +108,14 @@ class CanaisTable extends Table
 
         return $rules;
     }
+
+    public function getCanal($id_usuario)
+    {
+        $query = $this->find()
+                      ->select()
+                      ->where(['usuario_id' => $id_usuario])
+                      ->contain(['Usuarios', 'Episodios', 'Estatisticas']);
+        return $query->first();
+    }
+
 }

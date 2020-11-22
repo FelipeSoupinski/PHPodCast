@@ -16,9 +16,11 @@
 </head>
 <body>
     <header class="header-est">
-        <a href="index.html">
-            <?= $this->Html->image('contents/logo-sem-fundo.png', ['class' => 'logo', 'alt' => 'logo PHPodCast']) ?>
-        </a>
+        <?= $this->Html->link(
+            $this->Html->image('contents/logo-sem-fundo.png', ['class' => 'logo', 'alt' => 'logo PHPodCast']),
+            ['controller' => '/'],
+            ['escape' => false]
+        ) ?>
         <input type="search" class="search-bar" placeholder="Pesquise um PodCast"/>
         <a href="pesquisa.html">
             <?= $this->Html->image('contents/lupa.png', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']) ?>
@@ -27,9 +29,9 @@
             <?= $this->Html->image('contents/user.png', ['class' => 'user-img', 'alt' => 'foto do perfil do usuário']) ?>
         </a>
         <div class="dropdown-menu mr-3" aria-labelledby="dropdownMenuPerfil">
-            <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="meucanal.html">Meu canal</a>
-            <a class="dropdown-item" href="#">Sair</a>
+            <?= $this->Html->link(__('Configurações'), ['controller' => 'Usuarios', 'action' => 'configuracoes'], ['class' => 'dropdown-item']) ?>
+            <?= $this->Html->link(__('Meu canal'), ['controller' => 'Canais', 'action' => 'meucanal'], ['class' => 'dropdown-item']) ?>
+            <?= $this->Html->link(__('Sair'), ['controller' => 'Login', 'action' => 'logout'], ['class' => 'dropdown-item']) ?>
         </div>
     </header>
     <main>
@@ -41,20 +43,15 @@
             <hr/>
 
             <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/hangar18.webp', ['alt' => 'logo hangar18']) ?>
-                </div>
-                <div class="item">
-                    <a href="listaPodcast.html">
-                        <?= $this->Html->image('logo-podcasts/nerdcast.jpg', ['alt' => 'logo jovem nerd']) ?>
-                    </a>
-                </div>
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/flow.png', ['alt' => 'logo flow']) ?>
-                </div>
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/fala-parceiro.jpg', ['alt' => 'logo fala parceiro']) ?>
-                </div>
+                <?php foreach($canais as $canal) { ?>
+                    <div class="item">
+                        <?= $this->Html->link(
+                            $this->Html->image('../files/canais/'.$canal->id.'/'.$canal->imagem, ['alt' => 'logo do canal '.$canal->nome]),
+                            ['controller' => 'episodios', 'action' => 'lista', $canal->id],
+                            ['escape' => false]
+                        ) ?>
+                    </div>
+                <?php } ?>
             </div>
 
         </div>
@@ -66,18 +63,15 @@
             <hr/>
 
             <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/canaltech.jpg', ['alt' => 'logo Canaltech']) ?>
-                </div>
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/tecnocast.jpg', ['alt' => 'logo Tecnocast']) ?>
-                </div>
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/panico.webp', ['alt' => 'logo Pânico']) ?>
-                </div>
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/poucas.jpg', ['alt' => 'logo Poucas']) ?>
-                </div>
+                <?php foreach($canais as $canal) { ?>
+                    <div class="item">
+                        <?= $this->Html->link(
+                            $this->Html->image('../files/canais/'.$canal->id.'/'.$canal->imagem, ['alt' => 'logo do canal '.$canal->nome]),
+                            ['controller' => 'episodios', 'action' => 'lista', $canal->id],
+                            ['escape' => false]
+                        ) ?>
+                    </div>
+                <?php } ?>
             </div>
 
         </div>
@@ -89,18 +83,15 @@
             <hr/>
 
             <div class="owl-carousel owl-theme">
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/nao-ouvo.jpeg', ['alt' => 'logo não ouvo']) ?>
-                </div>
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/resumocast.png', ['alt' => 'logo resumocast']) ?>
-                </div>
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/loop-matinal.jpeg', ['alt' => 'logo loop matinal']) ?>
-                </div>
-                <div class="item">
-                    <?= $this->Html->image('logo-podcasts/indo-e-voltando.jpg', ['alt' => 'logo indo e voltando']) ?>
-                </div>
+                <?php foreach($canais as $canal) { ?>
+                    <div class="item">
+                        <?= $this->Html->link(
+                            $this->Html->image('../files/canais/'.$canal->id.'/'.$canal->imagem, ['alt' => 'logo do canal '.$canal->nome]),
+                            ['controller' => 'episodios', 'action' => 'lista', $canal->id],
+                            ['escape' => false]
+                        ) ?>
+                    </div>
+                <?php } ?>
             </div>
         </div>
 
@@ -184,7 +175,6 @@
     
     <?= $this->Html->script('owl.carousel.min.js') ?>
     <?= $this->Html->script('jplayer/jquery.jplayer.min.js') ?>
-    <?= $this->Html->script('player.js') ?>
     <?= $this->Html->script('index.js') ?>
     
     <script>
