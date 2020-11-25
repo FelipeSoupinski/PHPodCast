@@ -13,19 +13,21 @@ class PesquisaController extends AppController
 {
     public function search()
     {   
-        $q = $this->request->getData();
-        var_dump($q);
+        if($this->request->is(['POST'])){   
+            
+            debug($this->request->getData()); die();
 
-        
-        //$channels = TableRegistry::getTableLocator()->get('canais')->find()->where(['nome LIKE' => '%'.$data.'%']);
-        /*$channels = TableRegistry::getTableLocator()->get('canais')->find()->where(function (QueryExpression $exp, Query $q){
-            return $exp->like('nome', '%'.$data.'%');
-        });
-        foreach($data as $q)
-        {
-            echo $q . "<br/>";
+            //$channels = TableRegistry::getTableLocator()->get('canais')->find()->where(['nome LIKE' => '%'.$data.'%']);
+            /*$channels = TableRegistry::getTableLocator()->get('canais')->find()->where(function (QueryExpression $exp, Query $q){
+                return $exp->like('nome', '%'.$data.'%');
+            });
+            foreach($data as $q)
+            {
+                echo $q . "<br/>";
+            }
+            $this->set(compact('channels', 'episodios'));*/
         }
-        $this->set(compact('channels'));*/
+
     }
 
     /**
