@@ -27,21 +27,21 @@
 
             <?= $this->Html->link(
                 $this->Html->image('contents/view.png', ['alt' => 'ver-estatisticas']).'<span>Ver estatísticas</span>',
-                ['controller' => 'Estatisticas', 'action' => 'view', $canai->id],
+                ['controller' => 'Estatisticas', 'action' => 'canal', $canai->id],
                 ['class' => 'img-p-btn right', 'escape' => false]
             ); ?>
-            
+
         </div>
 
         <h2>Meus envios</h2>
 
         <?php foreach($episodios as $episodio){ ?>
-            <div class="envio">
-                <p>Postado em <?= date_format($episodio->data, 'd/m/Y') ?></p>
-                <p><?= $episodio->titulo ?></p>
-                <p><?= $episodio->descricao ?></p>
-            </div>
+        <div class="envio">
+            <p>Postado em <?= date_format($episodio->data, 'd/m/Y') ?></p>
+            <p><?= $episodio->titulo ?></p>
+            <p><?= $episodio->descricao ?></p>
+        </div>
         <?php } ?>
-        
+
     </div>
 </main>
