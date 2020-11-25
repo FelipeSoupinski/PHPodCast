@@ -22,7 +22,7 @@ body {
     border: 1px solid #000000;
 }
 
-.logo{
+.logo {
     width: 170px;
     height: 86px;
 }
@@ -43,7 +43,8 @@ body {
     float: right;
 }
 
-.user-toggle::after, ::before {
+.user-toggle::after,
+ ::before {
     display: none;
 }
 
@@ -53,12 +54,15 @@ body {
     border-color: #802828;
 }
 
-.img-est {
-    text-align: center;
-    width: 100%;
+.grafico {
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.txt-footer-img{
+.txt-footer-img {
     padding-left: 29vw;
     padding-top: 2vh;
 }

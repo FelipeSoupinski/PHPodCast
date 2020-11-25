@@ -27,18 +27,13 @@ class EstatisticasController extends AppController
         $this->set(compact('estatisticas'));
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id Estatistica id.
-     * @return \Cake\Http\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
+    
+
+    public function canal()
     {
-        $estatistica = $this->Estatisticas->get($id, [
-            'contain' => ['Canais'],
-        ]);
+        $user = $this->Auth->user('id');
+        $canal = $this->Estatisticas->Canais->getCanal($user);
+        $estatistica = $this->Estatisticas->getEstatisticas($canal->id);
 
         $this->set('estatistica', $estatistica);
     }
