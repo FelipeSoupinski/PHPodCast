@@ -33,13 +33,6 @@ input {
     margin: 0 auto;
 }
 
-.search{
-    position: relative;
-    bottom: 35px;
-    width: 80%;
-    display: inline-block;
-    margin-right: -4px;
-}
 
 .centralizer{
     margin-top: 30px;

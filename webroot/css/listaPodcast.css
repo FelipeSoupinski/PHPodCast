@@ -48,23 +48,6 @@ body {
     display: none;
 }
 
-.search-bar {
-    border-radius: 5px;
-    background-color: #C4C4C4;
-    box-shadow: -2px 3px 8px 2px #000000;
-    width: 50%;
-    height: 30px;
-    margin-left: 12%;
-    text-align: center;
-    color: #000;
-    font-family: Ubuntu;
-}
-
-.btn-pesquisa {
-    height: 66px;
-    width: 58px;
-}
-
 #infoPadrao {
     width: 55%;
     margin-left: 23%;
