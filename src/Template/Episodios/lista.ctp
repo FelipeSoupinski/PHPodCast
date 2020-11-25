@@ -23,10 +23,16 @@
             ['controller' => '/'],
             ['escape' => false]
         ) ?>
-        <input type="search" class="search-bar" placeholder="Pesquise um PodCast" />
-        <a href="pesquisa.html">
-            <?= $this->Html->image('contents/lupa.png', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']) ?>
-        </a>
+         <?php
+            echo $this->Form->create(null, [
+            'url' => ['controller' => 'Pesquisa', 'action' => 'search'],
+            'type' => 'get',
+            'class' => 'search-form'
+        ]);
+            echo $this->Form->control('', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2]);
+            echo $this->Form->submit('', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']);
+            echo $this->Form->end();
+        ?>
         <a class="dropdown-toggle user-toggle" id="dropdownMenuPerfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?= $this->Html->image('contents/user.png', ['class' => 'user-img', 'alt' => 'foto do perfil do usuário']) ?>
         </a>
