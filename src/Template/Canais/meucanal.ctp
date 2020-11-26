@@ -37,31 +37,21 @@
 
             <?= $this->Html->link(
                 $this->Html->image('contents/view.png', ['alt' => 'ver-estatisticas']).'<span>Ver estatísticas</span>',
-                ['controller' => 'Estatisticas', 'action' => 'view', 'id' => $canai->id],
+                ['controller' => 'Estatisticas', 'action' => 'canal', $canai->id],
                 ['class' => 'img-p-btn right', 'escape' => false]
             ); ?>
-            
+
         </div>
 
         <h2>Meus envios</h2>
 
         <?php foreach($episodios as $episodio){ ?>
-            <div class="envio">
-                <p>Postado em <?= date_format($episodio->data, 'd/m/Y') ?></p>
-                <p><?= $episodio->titulo ?></p>
-                <p><?= $episodio->descricao ?></p>
-                <?= $this->Form->postLink(
-                    $this->Html->image('edit-icon.png', ['class' => 'control-icon','alt' => 'Editar envio']).'<p>Editar envio</p>',
-                    ['controller' => 'Episodios', 'action' => 'edit', $episodio->id],
-                    [ 'class' => 'control-link-container','escape' => false]
-                ); ?>
-                <?= $this->Form->postLink(
-                    $this->Html->image('del-icon.png', ['class' => 'control-icon','alt' => 'Excluir envio']).'<p>Excluir envio</p>',
-                    ['controller' => 'Episodios', 'action' => 'delete', $episodio->id],
-                    ['class' => 'control-link-container', 'escape' => false]
-                ); ?>
-            </div>
+        <div class="envio">
+            <p>Postado em <?= date_format($episodio->data, 'd/m/Y') ?></p>
+            <p><?= $episodio->titulo ?></p>
+            <p><?= $episodio->descricao ?></p>
+        </div>
         <?php } ?>
-        
+
     </div>
 </main>
