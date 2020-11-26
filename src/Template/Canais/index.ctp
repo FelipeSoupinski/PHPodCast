@@ -1,39 +1,51 @@
-<?php $this->layout = null; ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PodCast Play</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:wght@500&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    
-    <?= $this->Html->css('listaPodcast.css') ?>
+
+    <?= $this->Html->css('owl.carousel.min.css') ?>
     <?= $this->Html->css('player.css') ?>
+    <?= $this->Html->css('index.css') ?>
+    <?= $this->Html->css('listaPodcast.css') ?>
+
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
 </head>
-
 <body>
-
     <header class="header-est">
-        <a href="index.html">
-            <?= $this->Html->image('contents/logo-sem-fundo.png', ['class' => 'logo', 'alt' => 'logo PHPodCast']) ?>
-        </a>
-        <input type="search" class="search-bar" placeholder="Pesquise um PodCast"/>
-        <a href="pesquisa.html">
-            <?= $this->Html->image('contents/lupa.png', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']) ?>
-        </a>
+        <?= $this->Html->link(
+            $this->Html->image('contents/logo-sem-fundo.png', ['class' => 'logo', 'alt' => 'logo PHPodCast']),
+            ['controller' => '/'],
+            ['escape' => false]
+        ) ?>
+        <?php
+            echo $this->Form->create(null, [
+                'url' => ['controller' => 'Pesquisa', 'action' => 'search'],
+                'type' => 'post',
+                'class' => 'search-form'
+            ]);
+            echo $this->Form->control('pesquisa', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2, 'required' => true, 'label' => false]);
+            echo $this->Form->submit('', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']);
+            echo $this->Form->end();
+        ?>
         <a class="dropdown-toggle user-toggle" id="dropdownMenuPerfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?= $this->Html->image('contents/user.png', ['class' => 'user-img', 'alt' => 'foto do perfil do usuário']) ?>
         </a>
         <div class="dropdown-menu mr-3" aria-labelledby="dropdownMenuPerfil">
-            <a class="dropdown-item" href="#">Configurações</a>
-            <a class="dropdown-item" href="meucanal.html">Meu canal</a>
-            <a class="dropdown-item" href="#">Sair</a>
+            <?= $this->Html->link(__('Configurações'), ['controller' => 'Usuarios', 'action' => 'configuracoes'], ['class' => 'dropdown-item']) ?>
+            <?= $this->Html->link(__('Meu canal'), ['controller' => 'Canais', 'action' => 'meucanal'], ['class' => 'dropdown-item']) ?>
+            <?= $this->Html->link(__('Sair'), ['controller' => 'Login', 'action' => 'logout'], ['class' => 'dropdown-item']) ?>
         </div>
     </header>
+
 
     <main>
         <div class="mt-3 colunm" id="infoPadrao">

@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
+    <?= $this->Html->css('listaPodcast.css') ?>
     <?= $this->Html->css('owl.carousel.min.css') ?>
     <?= $this->Html->css('player.css') ?>
     <?= $this->Html->css('index.css') ?>
@@ -24,10 +25,10 @@
         <?php
         echo $this->Form->create(null, [
             'url' => ['controller' => 'Pesquisa', 'action' => 'search'],
-            'type' => 'get',
+            'type' => 'post',
             'class' => 'search-form'
         ]);
-        echo $this->Form->control('', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2]);
+        echo $this->Form->control('pesquisa', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2]);
         echo $this->Form->submit('', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']);
         echo $this->Form->end();
         ?>
@@ -43,7 +44,7 @@
     <main>
         <div class="row content mt-3">
             <span class="mr-2">
-                <?= $this->Html->image('destaque.svg', ['alt' => 'ícone destaques']) ?>
+                <?= $this->Html->image('destaque.svg', ['alt' => 'ícone pesquisa canais']) ?>
             </span>
             <span class="ubuntu txt-normal fs22 pt-3">Canais</span> 
             <hr/>
@@ -51,11 +52,15 @@
             <div class="owl-carousel owl-theme">
                 <?php foreach($channels as $canal) { ?>
                     <div class="item">
+                    
                         <?= $this->Html->link(
                             $this->Html->image('../files/canais/'.$canal->id.'/'.$canal->imagem, ['alt' => 'logo do canal '.$canal->nome]),
                             ['controller' => 'episodios', 'action' => 'lista', $canal->id],
                             ['escape' => false]
-                        ) ?>
+                        );
+                        echo $this->Html->link($canal->nome,['controller' => 'episodios', 'action' => 'lista', $canal->id]);
+                        ?>
+                       
                     </div>
                 <?php } ?>
             </div>
@@ -63,22 +68,21 @@
         </div>
         <div class="row content mt-3">
             <span class="mr-2">
-                <?= $this->Html->image('novidades.svg', ['alt' => 'ícone novidades']) ?>
+                <?= $this->Html->image('novidades.svg', ['alt' => 'ícone pesquisa eps']) ?>
             </span>
-            <span class="ubuntu txt-normal fs22 pt-3">Novidades</span> 
+            <span class="ubuntu txt-normal fs22 pt-3">Episódios</span> 
             <hr/>
 
-            <!--<div class="owl-carousel owl-theme">
-                <?php foreach($query as $canal) { ?>
-                    <div class="item">
-                        <?= $this->Html->link(
-                            $this->Html->image('../files/canais/'.$canal->id.'/'.$canal->imagem, ['alt' => 'logo do canal '.$canal->nome]),
-                            ['controller' => 'episodios', 'action' => 'lista', $canal->id],
-                            ['escape' => false]
-                        ) ?>
+            <div>
+                <?php foreach($episodes as $episodio) { ?>
+                    <div class="item" style="display: inline-block; margin: 20px;">
+                    <button id="botaoPlayHoraMin" onclick="playThis('<?= $episodio->titulo ?>')">
+                        <?= $this->Html->image('contents/botao-play.svg', ['id' => 'imgBotaoPlay', 'class' => 'ml-0', 'alt' => 'Botão play']) ?>
+                    </button>
+                    <?= '<p>'.$episodio->titulo.'</p>'?>
                     </div>
                 <?php } ?>
-            </div>-->
+            </div>
         </div>
 
         <div class="space"></div>
@@ -181,6 +185,10 @@
             }
         })
     </script>
+    <?= $this->Html->script('lista.js') ?>
+
+    <script>
+        setVars(<?= json_encode($files) ?>, <?= json_encode($episodios) ?>, <?= json_encode($canal) ?>)
+    </script>
 </body>
 </html>
-           

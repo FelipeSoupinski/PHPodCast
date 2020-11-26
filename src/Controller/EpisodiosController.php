@@ -104,17 +104,18 @@ class EpisodiosController extends AppController
      */
     public function edit($id = null)
     {
+        debug($id);die();
         $episodio = $this->Episodios->get($id, [
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $episodio = $this->Episodios->patchEntity($episodio, $this->request->getData());
             if ($this->Episodios->save($episodio)) {
-                $this->Flash->success(__('The episodio has been saved.'));
+                $this->Flash->success(__('O episódio foi salvo.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The episodio could not be saved. Please, try again.'));
+            $this->Flash->error(__('O episódio não pode ser salvo. Por favor, tente novamente.'));
         }
         $canais = $this->Episodios->Canais->find('list', ['limit' => 200]);
         $this->set(compact('episodio', 'canais'));
@@ -132,9 +133,9 @@ class EpisodiosController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $episodio = $this->Episodios->get($id);
         if ($this->Episodios->delete($episodio)) {
-            $this->Flash->success(__('The episodio has been deleted.'));
+            $this->Flash->success(__('Episódio deletado.'));
         } else {
-            $this->Flash->error(__('The episodio could not be deleted. Please, try again.'));
+            $this->Flash->error(__('O episódio não pode ser deletado. Por favor, tente novamente.'));
         }
 
         return $this->redirect(['action' => 'index']);

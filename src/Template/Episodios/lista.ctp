@@ -23,13 +23,13 @@
             ['controller' => '/'],
             ['escape' => false]
         ) ?>
-         <?php
+        <?php
             echo $this->Form->create(null, [
-            'url' => ['controller' => 'Pesquisa', 'action' => 'search'],
-            'type' => 'get',
-            'class' => 'search-form'
-        ]);
-            echo $this->Form->control('', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2]);
+                'url' => ['controller' => 'Pesquisa', 'action' => 'search'],
+                'type' => 'post',
+                'class' => 'search-form'
+            ]);
+            echo $this->Form->control('pesquisa', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2, 'required' => true, 'label' => false]);
             echo $this->Form->submit('', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']);
             echo $this->Form->end();
         ?>
