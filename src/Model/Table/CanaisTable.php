@@ -90,7 +90,7 @@ class CanaisTable extends Table
             ->scalar('imagem')
             ->maxLength('imagem', 255)
             ->requirePresence('imagem', 'create')
-            ->notEmptyFile('imagem');
+            ->allowEmptyFile('imagem');
 
         return $validator;
     }

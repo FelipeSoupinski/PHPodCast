@@ -82,7 +82,7 @@ class EpisodiosTable extends Table
             ->scalar('arquivo')
             ->maxLength('arquivo', 255)
             ->requirePresence('arquivo', 'create')
-            ->notEmptyString('arquivo');
+            ->allowEmptyFile('arquivo');
 
         return $validator;
     }

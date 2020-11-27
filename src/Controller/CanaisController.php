@@ -97,13 +97,17 @@ class CanaisController extends AppController
             'contain' => [],
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $imagem = $canai->imagem;
             $canai = $this->Canais->patchEntity($canai, $this->request->getData());
-            if ($this->Canais->save($canai)) {
-                $this->Flash->success(__('The canai has been saved.'));
+            
+            if($canai->imagem == null) $canai->imagem = $imagem;
 
-                return $this->redirect(['action' => 'index']);
+            if ($this->Canais->save($canai)) {
+                $this->Flash->success(__('Canal salvo com sucesso.'));
+
+                return $this->redirect(['action' => 'meucanal']);
             }
-            $this->Flash->error(__('The canai could not be saved. Please, try again.'));
+            $this->Flash->error(__('Não.'));
         }
         $usuarios = $this->Canais->Usuarios->find('list', ['limit' => 200]);
         $this->set(compact('canai', 'usuarios'));
