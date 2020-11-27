@@ -10,10 +10,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
+    
     <?= $this->Html->css('listaPodcast.css') ?>
     <?= $this->Html->css('owl.carousel.min.css') ?>
     <?= $this->Html->css('player.css') ?>
     <?= $this->Html->css('index.css') ?>
+
 </head>
 <body>
     <header class="header-est">
@@ -23,14 +25,14 @@
             ['escape' => false]
         ) ?>
         <?php
-        echo $this->Form->create(null, [
-            'url' => ['controller' => 'Pesquisa', 'action' => 'search'],
-            'type' => 'post',
-            'class' => 'search-form'
-        ]);
-        echo $this->Form->control('pesquisa', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2]);
-        echo $this->Form->submit('', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']);
-        echo $this->Form->end();
+            echo $this->Form->create(null, [
+                'url' => ['controller' => 'Pesquisa', 'action' => 'search'],
+                'type' => 'post',
+                'class' => 'search-form'
+            ]);
+            echo $this->Form->control('pesquisa', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2, 'required' => true, 'label' => false]);
+            echo $this->Form->submit('', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']);
+            echo $this->Form->end();
         ?>
         <a class="dropdown-toggle user-toggle" id="dropdownMenuPerfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?= $this->Html->image('contents/user.png', ['class' => 'user-img', 'alt' => 'foto do perfil do usuário']) ?>

@@ -137,11 +137,11 @@ class CanaisController extends AppController
         $this->request->allowMethod(['post', 'delete']);
         $canai = $this->Canais->get($id);
         if ($this->Canais->delete($canai)) {
-            $this->Flash->success(__('The canai has been deleted.'));
+            $this->Flash->success(__('Canal deletado.'));
         } else {
-            $this->Flash->error(__('The canai could not be deleted. Please, try again.'));
+            $this->Flash->error(__('O canal não pode ser deletado. Tente novamente.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['action' => 'meucanal']);
     }
 }

@@ -17,7 +17,7 @@ svg {
 
 hr {
     background-color: #fff;
-    width: 100%;
+    width: 100vw;
     height: 1px;
     border: none;
     margin: 5px 0 10px;
@@ -29,7 +29,7 @@ hr {
 
 .header-est {
     height: 90px;
-    width: calc(100% - 1px);
+    width: calc(100vw - 1px);
     background: #802828;
     border: 1px solid #000000;
 }
@@ -68,7 +68,7 @@ hr {
 
 .img-est {
     text-align: center;
-    width: 100%;
+    width: 100vw;
 }
 
 .txt-footer-img{
@@ -146,4 +146,15 @@ hr {
     left: -10px !important;
     min-width: 90px !important;
     cursor: pointer;
+}
+
+@media screen and (max-width : 1033px){
+    .header-est {
+        height: 180px;
+    }
+    .search-form {
+        position: relative;
+        top: 90px;
+        right: 280px;
+    }
 }

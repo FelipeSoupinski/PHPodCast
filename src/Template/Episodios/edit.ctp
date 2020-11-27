@@ -3,35 +3,19 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Episodio $episodio
  */
+    $this->layout = 'site';
+    echo $this->Html->css('editarepisodio.css');
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $episodio->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $episodio->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Episodios'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Canais'), ['controller' => 'Canais', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Canai'), ['controller' => 'Canais', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Favoritos'), ['controller' => 'Favoritos', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Favorito'), ['controller' => 'Favoritos', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
 <div class="episodios form large-9 medium-8 columns content">
-    <?= $this->Form->create($episodio) ?>
+    <?= $this->Form->create($episodio, ['class' => 'form-edit']) ?>
     <fieldset>
-        <legend><?= __('Edit Episodio') ?></legend>
+        <legend><?= __('Editar episodio') ?></legend>
         <?php
-            echo $this->Form->control('titulo');
-            echo $this->Form->control('descricao');
-            echo $this->Form->control('canai_id', ['options' => $canais]);
-            echo $this->Form->control('data');
-            echo $this->Form->control('arquivo');
+            echo $this->Form->control('titulo', ['class' => 'input-text']);
+            echo $this->Form->control('descricao', ['class' => 'input-description']);
+            echo $this->Form->control('arquivo', ['type' => 'file']);
         ?>
     </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
+    <?= $this->Form->button(__('Submit'), ['class' => 'submit-form']) ?>
     <?= $this->Form->end() ?>
 </div>

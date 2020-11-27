@@ -7,7 +7,7 @@
     <div class="title-add">Cadastrar Canal</div>
     <div class="linha-horizontal"></div>
 
-    <?= $this->Form->create($canai, ['type' => 'file', 'class' => 'form-cad']) ?>
+    <?= $this->Form->create($canai, ['type' => 'file']) ?>
 
         <div class="row mt-4">
             <div class="col-sm-4">
@@ -54,5 +54,4 @@
         </div>
 
     <?= $this->Form->end() ?>
-
 </main>

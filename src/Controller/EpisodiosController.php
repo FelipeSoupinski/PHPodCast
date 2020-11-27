@@ -104,16 +104,16 @@ class EpisodiosController extends AppController
      */
     public function edit($id = null)
     {
-        debug($id);die();
         $episodio = $this->Episodios->get($id, [
             'contain' => [],
         ]);
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
             $episodio = $this->Episodios->patchEntity($episodio, $this->request->getData());
             if ($this->Episodios->save($episodio)) {
                 $this->Flash->success(__('O episódio foi salvo.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Canais', 'action' => 'meucanal']);
             }
             $this->Flash->error(__('O episódio não pode ser salvo. Por favor, tente novamente.'));
         }
@@ -138,6 +138,6 @@ class EpisodiosController extends AppController
             $this->Flash->error(__('O episódio não pode ser deletado. Por favor, tente novamente.'));
         }
 
-        return $this->redirect(['action' => 'index']);
+        return $this->redirect(['controller' => 'Canais', 'action' => 'meucanal']);
     }
 }

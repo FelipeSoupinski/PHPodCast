@@ -14,13 +14,13 @@
                 <p><?= $canai->descricao ?></p>
                 <?= $this->Form->postLink(
                     $this->Html->image('edit-icon.png', ['class' => 'control-icon','alt' => 'Editar canal']).'<p>Editar canal</p>',
-                    ['controller' => 'Canais', 'action' => 'edit', 'id' => $canai->id],
-                    [ 'class' => 'control-link-container','escape' => false]
+                    ['controller' => 'Canais', 'action' => 'edit', $canai->id],
+                    [ 'class' => 'control-link-container','method' => 'post','escape' => false]
                 ); ?>
                 <?= $this->Form->postLink(
                     $this->Html->image('del-icon.png', ['class' => 'control-icon','alt' => 'Excluir canal']).'<p>Excluir canal</p>',
-                    ['controller' => 'Canais', 'action' => 'delete', 'id' => $canai->id],
-                    ['class' => 'control-link-container', 'escape' => false]
+                    ['controller' => 'Canais', 'action' => 'delete', $canai->id],
+                    ['class' => 'control-link-container', 'method' => 'delete', 'escape' => false]
                 ); ?>
             </div>
 
@@ -53,12 +53,12 @@
                 <?= $this->Form->postLink(
                     $this->Html->image('edit-icon.png', ['class' => 'control-icon','alt' => 'Editar envio']).'<p>Editar envio</p>',
                     ['controller' => 'Episodios', 'action' => 'edit', $episodio->id],
-                    [ 'class' => 'control-link-container','escape' => false]
+                    [ 'class' => 'control-link-container', 'method' => 'post','escape' => false]
                 ); ?>
                 <?= $this->Form->postLink(
                     $this->Html->image('del-icon.png', ['class' => 'control-icon','alt' => 'Excluir envio']).'<p>Excluir envio</p>',
                     ['controller' => 'Episodios', 'action' => 'delete', $episodio->id],
-                    ['class' => 'control-link-container', 'escape' => false]
+                    ['class' => 'control-link-container', 'method' => 'delete', 'escape' => false]
                 ); ?>
             </div>
         <?php } ?>
