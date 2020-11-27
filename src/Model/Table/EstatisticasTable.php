@@ -90,4 +90,13 @@ class EstatisticasTable extends Table
 
         return $rules;
     }
+
+    public function getEstatisticas($canal)
+    {
+        $query = $this->find()
+                      ->select()
+                      ->where(['canai_id' => $canal]);
+        return $query->first();
+    }
+
 }
