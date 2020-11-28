@@ -35,7 +35,13 @@
             echo $this->Form->end();
         ?>
         <a class="dropdown-toggle user-toggle" id="dropdownMenuPerfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?= $this->Html->image('contents/user.png', ['class' => 'user-img', 'alt' => 'foto do perfil do usuário']) ?>
+            <?php
+                if($usuario == null or $usuario->imagem == null or $usuario->imagem == ''){
+                    echo $this->Html->image('contents/user.png', ['class' => 'user-img-default', 'alt' => 'foto do perfil do usuário']);
+                } else {
+                    echo $this->Html->image('../files/usuarios/'.$usuario->id.'/'.$usuario->imagem, ['class' => 'user-img', 'alt' => 'foto do perfil do usuário']);
+                }
+            ?>
         </a>
         <div class="dropdown-menu mr-3" aria-labelledby="dropdownMenuPerfil">
             <?= $this->Html->link(__('Configurações'), ['controller' => 'Usuarios', 'action' => 'configuracoes'], ['class' => 'dropdown-item']) ?>
@@ -60,7 +66,7 @@
                             ['controller' => 'episodios', 'action' => 'lista', $canal->id],
                             ['escape' => false]
                         );
-                        echo $this->Html->link($canal->nome,['controller' => 'episodios', 'action' => 'lista', $canal->id]);
+                        echo $this->Html->link($canal->nome, ['controller' => 'episodios', 'action' => 'lista', $canal->id], ['class' => 'link-pesq']);
                         ?>
                        
                     </div>
@@ -171,7 +177,6 @@
     
     <script>
         $('.owl-carousel').owlCarousel({
-            loop:true,
             margin:10,
             nav:true,
             responsive:{

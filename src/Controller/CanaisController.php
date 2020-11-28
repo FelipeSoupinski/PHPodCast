@@ -13,36 +13,6 @@ use Cake\ORM\TableRegistry;
  */
 class CanaisController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null
-     */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['Usuarios'],
-        ];
-        $canais = $this->paginate($this->Canais);
-
-        $this->set(compact('canais'));
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Canai id.
-     * @return \Cake\Http\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $canai = $this->Canais->get($id, [
-            'contain' => ['Usuarios', 'Episodios', 'Estatisticas'],
-        ]);
-
-        $this->set('canai', $canai);
-    }
 
     /**
      * Add method
@@ -52,6 +22,10 @@ class CanaisController extends AppController
     public function add()
     {
         if($this->Canais->getCanal($this->Auth->user('id')) == null) {
+
+            $usuariosTable = TableRegistry::getTableLocator()->get('Usuarios');
+            $id = $this->Auth->user('id');
+            $usuario = $usuariosTable->get($id);
 
             $canai = $this->Canais->newEntity();
             if ($this->request->is('post')) {
@@ -75,12 +49,12 @@ class CanaisController extends AppController
   
             }
             $usuarios = $this->Canais->Usuarios->find('list', ['limit' => 200]);
-            $this->set(compact('canai', 'usuarios'));
+            $this->set(compact('canai', 'usuarios', 'usuario'));
 
         } else {
             $this->Flash->error(__('Você já possui um canal.'));
 
-            return $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'meucanal']);
         }
     }
 
@@ -96,6 +70,11 @@ class CanaisController extends AppController
         $canai = $this->Canais->get($id, [
             'contain' => [],
         ]);
+
+        $usuariosTable = TableRegistry::getTableLocator()->get('Usuarios');
+        $id = $this->Auth->user('id');
+        $usuario = $usuariosTable->get($id);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $imagem = $canai->imagem;
             $canai = $this->Canais->patchEntity($canai, $this->request->getData());
@@ -110,11 +89,15 @@ class CanaisController extends AppController
             $this->Flash->error(__('Não.'));
         }
         $usuarios = $this->Canais->Usuarios->find('list', ['limit' => 200]);
-        $this->set(compact('canai', 'usuarios'));
+        $this->set(compact('canai', 'usuarios', 'usuario'));
     }
 
     public function meucanal()
     {
+        $usuariosTable = TableRegistry::getTableLocator()->get('Usuarios');
+        $id = $this->Auth->user('id');
+        $usuario = $usuariosTable->get($id);
+
         $canai = $this->Canais->getCanal($this->Auth->user('id'));
 
         if($canai == null) {
@@ -126,7 +109,7 @@ class CanaisController extends AppController
         $episodiosTable = TableRegistry::getTableLocator()->get('Episodios');
         $episodios = $episodiosTable->getEpisodios($canai->id);
 
-        $this->set(compact('canai', 'episodios'));
+        $this->set(compact('canai', 'episodios', 'usuario'));
     }
 
     /**

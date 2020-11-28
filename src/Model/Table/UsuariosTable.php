@@ -40,6 +40,8 @@ class UsuariosTable extends Table
         $this->setPrimaryKey('id');
 
         $this->addBehavior('Timestamp');
+        $this->addBehavior('UploadRed');
+        $this->addBehavior('DeleteArq');
 
         $this->hasMany('Canais', [
             'foreignKey' => 'usuario_id',

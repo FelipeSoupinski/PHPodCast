@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\ORM\TableRegistry;
 
 /**
  * Estatisticas Controller
@@ -12,22 +13,6 @@ use App\Controller\AppController;
  */
 class EstatisticasController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null
-     */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['Canais'],
-        ];
-        $estatisticas = $this->paginate($this->Estatisticas);
-
-        $this->set(compact('estatisticas'));
-    }
-
-    
 
     public function canal()
     {
@@ -35,7 +20,10 @@ class EstatisticasController extends AppController
         $canal = $this->Estatisticas->Canais->getCanal($user);
         $estatistica = $this->Estatisticas->getEstatisticas($canal->id);
 
-        $this->set('estatistica', $estatistica);
+        $usuariosTable = TableRegistry::getTableLocator()->get('Usuarios');
+        $usuario = $usuariosTable->get($user);
+
+        $this->set(compact('estatistica', 'usuario'));
     }
 
     /**
@@ -59,48 +47,4 @@ class EstatisticasController extends AppController
         $this->set(compact('estatistica', 'canais'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Estatistica id.
-     * @return \Cake\Http\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $estatistica = $this->Estatisticas->get($id, [
-            'contain' => [],
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $estatistica = $this->Estatisticas->patchEntity($estatistica, $this->request->getData());
-            if ($this->Estatisticas->save($estatistica)) {
-                $this->Flash->success(__('The estatistica has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The estatistica could not be saved. Please, try again.'));
-        }
-        $canais = $this->Estatisticas->Canais->find('list', ['limit' => 200]);
-        $this->set(compact('estatistica', 'canais'));
-    }
-
-    /**
-     * Delete method
-     *
-     * @param string|null $id Estatistica id.
-     * @return \Cake\Http\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $estatistica = $this->Estatisticas->get($id);
-        if ($this->Estatisticas->delete($estatistica)) {
-            $this->Flash->success(__('The estatistica has been deleted.'));
-        } else {
-            $this->Flash->error(__('The estatistica could not be deleted. Please, try again.'));
-        }
-
-        return $this->redirect(['action' => 'index']);
-    }
 }

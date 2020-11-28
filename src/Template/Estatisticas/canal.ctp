@@ -1,11 +1,11 @@
 <?php $this->layout = 'site' ?>
+
 <?= $this->Html->css('estatisticas.css')?>
 
-<head>
-    <script>
+<script>
     ouvintes = <?= $estatistica->total_ouvintes?>
-    </script>
-</head>
+</script>
+
 <main>
 
     <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js') ?>

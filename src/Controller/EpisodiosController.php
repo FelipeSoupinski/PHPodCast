@@ -13,36 +13,6 @@ use Cake\ORM\TableRegistry;
  */
 class EpisodiosController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null
-     */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['Canais'],
-        ];
-        $episodios = $this->paginate($this->Episodios);
-
-        $this->set(compact('episodios'));
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Episodio id.
-     * @return \Cake\Http\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $episodio = $this->Episodios->get($id, [
-            'contain' => ['Canais', 'Favoritos'],
-        ]);
-
-        $this->set('episodio', $episodio);
-    }
 
     /**
      * Add method
@@ -51,6 +21,10 @@ class EpisodiosController extends AppController
      */
     public function add()
     {
+        $usuariosTable = TableRegistry::getTableLocator()->get('Usuarios');
+        $id = $this->Auth->user('id');
+        $usuario = $usuariosTable->get($id);
+
         $episodio = $this->Episodios->newEntity();
         if ($this->request->is('post')) {
             $episodio = $this->Episodios->patchEntity($episodio, $this->request->getData());
@@ -76,7 +50,7 @@ class EpisodiosController extends AppController
             }
 
         }
-        $this->set(compact('episodio'));
+        $this->set(compact('episodio', 'usuario'));
     }
 
     public function lista($id)
@@ -84,6 +58,10 @@ class EpisodiosController extends AppController
         $canalTable = TableRegistry::getTableLocator()->get('Canais');
         $canal = $canalTable->get($id);
         $episodios = $this->Episodios->getEpisodios($id);
+
+        $usuariosTable = TableRegistry::getTableLocator()->get('Usuarios');
+        $id = $this->Auth->user('id');
+        $usuario = $usuariosTable->get($id);
         
         $i = 0;
         $files = [];
@@ -92,7 +70,7 @@ class EpisodiosController extends AppController
             $i++;
         }
 
-        $this->set(compact('episodios', 'canal', 'files'));
+        $this->set(compact('episodios', 'canal', 'files', 'usuario'));
     }
 
     /**
@@ -108,6 +86,10 @@ class EpisodiosController extends AppController
             'contain' => [],
         ]);
         
+        $usuariosTable = TableRegistry::getTableLocator()->get('Usuarios');
+        $id = $this->Auth->user('id');
+        $usuario = $usuariosTable->get($id);
+
         if ($this->request->is(['patch', 'post', 'put'])) {
             $episodio = $this->Episodios->patchEntity($episodio, $this->request->getData());
             if ($this->Episodios->save($episodio)) {
@@ -118,7 +100,7 @@ class EpisodiosController extends AppController
             $this->Flash->error(__('O episódio não pode ser salvo. Por favor, tente novamente.'));
         }
         $canais = $this->Episodios->Canais->find('list', ['limit' => 200]);
-        $this->set(compact('episodio', 'canais'));
+        $this->set(compact('episodio', 'canais', 'usuario'));
     }
 
     /**

@@ -13,7 +13,11 @@ class HomeController extends AppController
         $canaisTable = TableRegistry::getTableLocator()->get('Canais');
         $canais = $canaisTable->find('all');
 
-        $this->set(compact('canais'));
+        $usuariosTable = TableRegistry::getTableLocator()->get('Usuarios');
+        $id = $this->Auth->user('id');
+        $usuario = $usuariosTable->get($id);
+
+        $this->set(compact('canais', 'usuario'));
     }
 
 }
