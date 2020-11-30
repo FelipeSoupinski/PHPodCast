@@ -1,19 +1,23 @@
+function setVars(files, favoritos) {
+    window.files = files;
+    window.favoritos = favoritos;
+}
+
 $(function() {
     // Definir playlist
-    var playlist = [{
-        artist: 'Krono Remix',
-        title: 'Dancin',
-        mp3: '../songs/dancin.mp3'
-    }, {
-        artist: 'Twenty one Pilots',
-        title: 'Stressed Out',
-        mp3: '../songs/stressedout.mp3'
-    }];
+    playlist = [];
+    for(var i=0; i<files.length; i++){
+        playlist[i] = {
+            artist: favoritos[i]['nome_canal'],
+            title: favoritos[i]['nome_episodio'],
+            mp3: files[i]
+        };
+    }
 
-    var currentTrack = 0;
-    var numTracks = playlist.length;
+    currentTrack = 0;
+    numTracks = playlist.length;
 
-    var player = $(".player").jPlayer({
+    player = $(".player").jPlayer({
         ready: function () {
 
             // configura a faixa inicial do jPlayer
@@ -65,8 +69,22 @@ $(function() {
      $('.player-prev').click(function() {
        player.playPrevious();
      });
-     
+
  });
+
+function playThis(x, favorito) {
+    for(var i=0; i<files.length; i++){
+        if(playlist[i]['title'] == x){
+            currentTrack = i;
+            player.jPlayer("setMedia", playlist[currentTrack]).jPlayer("play");
+            break;
+        } 
+    }
+    if(favorito){
+        setFavorito();
+    }
+}
+
 
 function attVolume() {
     document.getElementById('jp_audio_0').volume =document.getElementById('volume-control').value;
@@ -109,9 +127,15 @@ $(function(){
 
 function attImageFavoritos(){
     var favorito = document.getElementById("add-favoritos");
-    if(favorito.getAttribute('src') == '../img/favorito.png'){
-        favorito.setAttribute('src', '../img/favorito_2.png');
+    if(favorito.getAttribute('src') == './img/favorito_2.png'){
+        favorito.setAttribute('src', './img/favorito.png');
     } else {
-        favorito.setAttribute('src', '../img/favorito.png');
+        favorito.setAttribute('src', './img/favorito_2.png');
     }
 }
+
+function setFavorito(){
+    var favorito = document.getElementById("add-favoritos");
+    favorito.setAttribute('src', './img/favorito_2.png');
+}
+

@@ -17,7 +17,29 @@ class HomeController extends AppController
         $id = $this->Auth->user('id');
         $usuario = $usuariosTable->get($id);
 
-        $this->set(compact('canais', 'usuario'));
+        $favoritosTable = TableRegistry::getTableLocator()->get('Favoritos');
+        $favoritos = $favoritosTable->getFavoritosByUser($id);
+
+        $episodiosTable = TableRegistry::getTableLocator()->get('Episodios');
+
+        foreach($favoritos as $favorito){
+            $ep = $episodiosTable->get($favorito->episodio_id);
+            $canal = $canaisTable->get($ep->canai_id);
+            $favorito->canai_id = $ep->canai_id;
+            $favorito->nome_canal = $canal->nome;
+            $favorito->imagem_canal = $canal->imagem;
+            $favorito->nome_episodio = $ep->titulo;
+            $favorito->arquivo = $ep->arquivo;
+        }
+
+        $i = 0;
+        $files = [];
+        foreach($favoritos as $favorito){
+            $files[$i] = './files'.DS.'canais'.DS.$favorito->canai_id.DS.'episodios'.DS.$favorito->episodio_id.DS.$favorito->arquivo;
+            $i++;
+        }
+
+        $this->set(compact('canais', 'usuario', 'files', 'favoritos'));
     }
 
 }

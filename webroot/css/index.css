@@ -167,3 +167,18 @@ hr {
         right: 280px;
     }
 }
+
+.link-pesq {
+    color: white;
+    text-align: center;
+    display: flow-root;
+}
+
+.link-pesq:hover {
+    color: #C4C4C4;
+    text-decoration: none;
+}
+
+#botaoPlayHoraMin {
+    cursor: pointer;
+}
