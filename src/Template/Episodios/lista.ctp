@@ -101,7 +101,11 @@
             <div class="col-sm-4 mt-3">
                 <div class="player-controls">
 
-                    <?= $this->Html->image('favorito.png', ['id' => 'add-favoritos', 'class' => 'img-favorito', 'alt' => 'imagem de adicionar aos favoritos', 'onclick' => 'attImageFavoritos()']) ?>
+                <?= $this->Form->postLink($this->Html->image('favorito.png', ['id' => 'add-favoritos', 'class' => 'img-favorito', 'alt' => 'imagem de adicionar aos favoritos', 'onclick' => 'attImageFavoritos()']),
+                        ['controller' => 'favoritos', 'action' => 'add'],
+                        ['escape' => false]
+                    );
+                     ?>
 
                     <span class="player-prev">
                         <?= $this->Html->image('double-arrows-prev.svg', ['class' => 'btn-prev', 'alt' => 'botão de recuar']) ?>
