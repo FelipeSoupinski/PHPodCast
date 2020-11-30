@@ -1,6 +1,6 @@
-function setVars(files, favoritos) {
+function setVars(files, episodios) {
     window.files = files;
-    window.favoritos = favoritos;
+    window.episodios = episodios;
 }
 
 $(function() {
@@ -8,8 +8,8 @@ $(function() {
     playlist = [];
     for(var i=0; i<files.length; i++){
         playlist[i] = {
-            artist: favoritos[i]['nome_canal'],
-            title: favoritos[i]['nome_episodio'],
+            artist: episodios[i]['nome_canal'],
+            title: episodios[i]['titulo'],
             mp3: files[i]
         };
     }
@@ -135,16 +135,16 @@ $(function(){
 
 function attImageFavoritos(){
     var favorito = document.getElementById("add-favoritos");
-    if(favorito.getAttribute('src') == './img/favorito_2.png'){
-        favorito.setAttribute('src', './img/favorito.png');
+    if(favorito.getAttribute('src') == '../img/favorito_2.png'){
+        favorito.setAttribute('src', '../img/favorito.png');
     } else {
-        favorito.setAttribute('src', './img/favorito_2.png');
+        favorito.setAttribute('src', '../img/favorito_2.png');
     }
 }
 
 function setFavorito(){
     var favorito = document.getElementById("add-favoritos");
-    favorito.setAttribute('src', './img/favorito_2.png');
+    favorito.setAttribute('src', '../img/favorito_2.png');
 }
 
 function notFavorito(){

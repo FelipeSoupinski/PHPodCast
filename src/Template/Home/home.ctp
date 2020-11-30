@@ -99,7 +99,7 @@
             <div class="owl-carousel owl-theme">
                 <?php foreach ($favoritos as $favorito) { ?>
                     <div class="item">
-                        <div id="botaoPlayHoraMin" onclick="playThis('<?= $favorito->nome_episodio ?>', true)">
+                        <div id="botaoPlayHoraMin" onclick="playThis('<?= $favorito->nome_episodio ?>', true, '<?= './files/canais/' . $favorito->canai_id . '/' . $favorito->imagem_canal ?>')">
                             <?= $this->Html->image('../files/canais/' . $favorito->canai_id . '/' . $favorito->imagem_canal, ['alt' => 'logo do canal ' . $favorito->nome_canal]) ?>
                             <span class="link-pesq"> <?= $favorito->nome_episodio ?> </span>
                         </div>
@@ -115,7 +115,7 @@
                 <div class="player-timeline-control"></div>
             </div>
             <div class="col-sm-1">
-                <?= $this->Html->image('logo-podcasts/nerdcast.jpg', ['class' => 'logo-player', 'alt' => 'logo jovem nerd']) ?>
+                <img src="" id="canal-logo" class="logo-player" alt="logo do canal" style="display:none;" />
             </div>
             <div class="col-sm-3">
                 <div class="player-display">
