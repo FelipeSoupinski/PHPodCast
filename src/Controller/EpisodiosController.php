@@ -63,11 +63,22 @@ class EpisodiosController extends AppController
         $id = $this->Auth->user('id');
         $usuario = $usuariosTable->get($id);
         
+        $favoritosTable = TableRegistry::getTableLocator()->get('Favoritos');
+        $favoritos = $favoritosTable->getFavoritosByUser($id);
+
         $i = 0;
         $files = [];
         foreach($episodios as $episodio){
             $files[$i] = '../../files'.DS.'canais'.DS.$canal->id.DS.'episodios'.DS.$episodio->id.DS.$episodio->arquivo;
             $i++;
+        }
+
+        foreach($episodios as $episodio){
+            foreach($favoritos as $favorito){
+                if($favorito->episodio_id == $episodio->id){
+                    $episodio->favorito = true;
+                }
+            }
         }
 
         $this->set(compact('episodios', 'canal', 'files', 'usuario'));

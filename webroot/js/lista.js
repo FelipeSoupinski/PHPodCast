@@ -73,13 +73,16 @@ $(function() {
 
  });
 
-function playThis(x) {
+function playThis(x, favorito) {
     for(var i=0; i<files.length; i++){
         if(playlist[i]['title'] == x){
             currentTrack = i;
             player.jPlayer("setMedia", playlist[currentTrack]).jPlayer("play");
             break;
         } 
+    }
+    if(favorito){
+        setFavorito();
     }
 }
 
@@ -125,9 +128,15 @@ $(function(){
 
 function attImageFavoritos(){
     var favorito = document.getElementById("add-favoritos");
-    if(favorito.getAttribute('src') == '../img/favorito.png'){
-        favorito.setAttribute('src', '../img/favorito_2.png');
+    if(favorito.getAttribute('src') == '../../img/favorito_2.png'){
+        favorito.setAttribute('src', '../../img/favorito.png');
     } else {
-        favorito.setAttribute('src', '../img/favorito.png');
+        favorito.setAttribute('src', '../../img/favorito_2.png');
     }
 }
+
+function setFavorito(){
+    var favorito = document.getElementById("add-favoritos");
+    favorito.setAttribute('src', '../../img/favorito_2.png');
+}
+

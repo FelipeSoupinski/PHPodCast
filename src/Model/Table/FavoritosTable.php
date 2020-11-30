@@ -76,4 +76,37 @@ class FavoritosTable extends Table
 
         return $rules;
     }
+
+    /**
+     * Verifica se o episodio já foi adicionado aos favoritos pelo usuario.
+     * @return false caso já foi add
+     * @return true caso ainda não foi
+    */
+    public function check($ep, $user)
+    {
+        $query = $this->find()
+                      ->select()
+                      ->where(['episodio_id' => $ep, 'usuario_id' => $user]);
+        if($query->first() != null){
+            return false;
+        }
+        return true;
+    }
+
+    public function getFavoritosByUser($user_id)
+    {
+        $query = $this->find()
+                      ->select()
+                      ->where(['usuario_id' => $user_id]);
+        return $query->all();
+    }
+
+    public function getFavoritosByEpAndUser($ep, $user_id)
+    {
+        $query = $this->find()
+                      ->select()
+                      ->where(['usuario_id' => $user_id, 'episodio_id' => $ep]);
+        return $query->first();
+    }
+
 }
