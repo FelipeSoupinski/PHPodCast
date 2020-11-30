@@ -24,22 +24,22 @@
             ['escape' => false]
         ) ?>
         <?php
-            echo $this->Form->create(null, [
-                'url' => ['controller' => 'Pesquisa', 'action' => 'search'],
-                'type' => 'post',
-                'class' => 'search-form'
-            ]);
-            echo $this->Form->control('pesquisa', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2, 'required' => true, 'label' => false]);
-            echo $this->Form->submit('', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']);
-            echo $this->Form->end();
+        echo $this->Form->create(null, [
+            'url' => ['controller' => 'Pesquisa', 'action' => 'search'],
+            'type' => 'post',
+            'class' => 'search-form'
+        ]);
+        echo $this->Form->control('pesquisa', ['type' => 'search', 'class' => 'search-bar', 'placeholder' => 'Pesquise um Podcast', 'minlength' => 2, 'required' => true, 'label' => false]);
+        echo $this->Form->submit('', ['class' => 'btn-pesquisa', 'alt' => 'pesquisar']);
+        echo $this->Form->end();
         ?>
         <a class="dropdown-toggle user-toggle" id="dropdownMenuPerfil" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <?php
-                if($usuario == null or $usuario->imagem == null or $usuario->imagem == ''){
-                    echo $this->Html->image('contents/user.png', ['class' => 'user-img-default', 'alt' => 'foto do perfil do usuário']);
-                } else {
-                    echo $this->Html->image('../files/usuarios/'.$usuario->id.'/'.$usuario->imagem, ['class' => 'user-img', 'alt' => 'foto do perfil do usuário']);
-                }
+            if ($usuario == null or $usuario->imagem == null or $usuario->imagem == '') {
+                echo $this->Html->image('contents/user.png', ['class' => 'user-img-default', 'alt' => 'foto do perfil do usuário']);
+            } else {
+                echo $this->Html->image('../files/usuarios/' . $usuario->id . '/' . $usuario->imagem, ['class' => 'user-img', 'alt' => 'foto do perfil do usuário']);
+            }
             ?>
         </a>
         <div class="dropdown-menu mr-3" aria-labelledby="dropdownMenuPerfil">
@@ -71,9 +71,15 @@
                                 <h4 class="pt-0" id="titlePod"><?= $episodio->titulo ?></h4>
                                 <?= $episodio->descricao ?>
                             </p>
-                            <button id="botaoPlayHoraMin" onclick="playThis('<?= $episodio->titulo ?>')">
-                                <?= $this->Html->image('contents/botao-play.svg', ['id' => 'imgBotaoPlay', 'class' => 'ml-0', 'alt' => 'Botão play']) ?>
-                            </button>
+                            <?php if($episodio->favorito) { ?>
+                                <button id="botaoPlayHoraMin" onclick="playThis('<?= $episodio->titulo ?>', true)">
+                                    <?= $this->Html->image('contents/botao-play.svg', ['id' => 'imgBotaoPlay', 'class' => 'ml-0', 'alt' => 'Botão play']) ?>
+                                </button>
+                            <?php } else { ?>
+                                <button id="botaoPlayHoraMin" onclick="playThis('<?= $episodio->titulo ?>', false)">
+                                    <?= $this->Html->image('contents/botao-play.svg', ['id' => 'imgBotaoPlay', 'class' => 'ml-0', 'alt' => 'Botão play']) ?>
+                                </button>
+                            <?php } ?>
                         </li>
                     <?php } ?>
                 </ul>
@@ -91,7 +97,7 @@
             </div>
             <div class="col-sm-3">
                 <div class="player-display">
-                    <span class="player-current-track"></span>
+                    <span id="title" class="player-current-track"></span>
                 </div>
                 <div class="tempo-atual">
                     <span id="tempo-atual"></span>
@@ -154,7 +160,7 @@
 
     </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <?= $this->Html->script('jquery-3.5.1.min.js') ?>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
 
@@ -164,6 +170,49 @@
 
     <script>
         setVars(<?= json_encode($files) ?>, <?= json_encode($episodios) ?>, <?= json_encode($canal) ?>)
+    </script>
+
+    <script>
+        $('document').ready(function() {
+            $('#add-favoritos').click(function() {
+                var favorito = document.getElementById("add-favoritos");
+                if(favorito.getAttribute('src') == '../../img/favorito_2.png'){
+                    addFavoritos();
+                } else {
+                    removeFavoritos();
+                }
+            });
+        });
+
+        function addFavoritos() {
+            var title = document.getElementById('title').innerHTML;
+
+            $.ajax({
+
+                headers: {
+                    'X-CSRF-Token': '<?= h($this->request->getParam('_csrfToken')); ?>'
+                },
+
+                method: 'post',
+                url: "<?= $this->Url->build(['controller' => 'favoritos', 'action' => 'add']); ?>",
+                data: {"title" : title}
+            });
+        }
+
+        function removeFavoritos() {
+            var title = document.getElementById('title').innerHTML;
+
+            $.ajax({
+
+                headers: {
+                    'X-CSRF-Token': '<?= h($this->request->getParam('_csrfToken')); ?>'
+                },
+
+                method: 'post',
+                url: "<?= $this->Url->build(['controller' => 'favoritos', 'action' => 'remove']); ?>",
+                data: {"title" : title}
+            });
+        }
     </script>
 
 </body>

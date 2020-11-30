@@ -110,4 +110,21 @@ class EpisodiosTable extends Table
         return $query->all();
     }
 
+    public function getEpisodioByName($name)
+    {
+        $query = $this->find()
+                      ->select()
+                      ->where(['titulo' => $name]);
+        return $query->first();
+    }
+
+    public function pesquisa($query)
+    {
+        $query = $this->find()
+                      ->select()
+                      ->where(['titulo LIKE' => '%'.$query.'%'])
+                      ->orWhere(['descricao LIKE' =>'%'.$query.'%']);
+        return $query->all();
+    }
+
 }

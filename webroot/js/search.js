@@ -1,6 +1,5 @@
-function setVars(files, episodios, canal) {
+function setVars(files, episodios) {
     window.files = files;
-    window.canal = canal;
     window.episodios = episodios;
 }
 
@@ -9,7 +8,7 @@ $(function() {
     playlist = [];
     for(var i=0; i<files.length; i++){
         playlist[i] = {
-            artist: canal['nome'],
+            artist: episodios[i]['nome_canal'],
             title: episodios[i]['titulo'],
             mp3: files[i]
         };
@@ -73,7 +72,7 @@ $(function() {
 
  });
 
-function playThis(x, favorito) {
+function playThis(x, favorito, imagem) {
     for(var i=0; i<files.length; i++){
         if(playlist[i]['title'] == x){
             currentTrack = i;
@@ -83,9 +82,17 @@ function playThis(x, favorito) {
     }
     if(favorito){
         setFavorito();
+    } else {
+        notFavorito();
     }
+    attImagemPlayer(imagem);
 }
 
+function attImagemPlayer(imagem){
+    img = document.getElementById('canal-logo');
+    img.style = 'display:block;';
+    img.setAttribute('src', imagem);
+}
 
 function attVolume() {
     document.getElementById('jp_audio_0').volume =document.getElementById('volume-control').value;
@@ -128,15 +135,20 @@ $(function(){
 
 function attImageFavoritos(){
     var favorito = document.getElementById("add-favoritos");
-    if(favorito.getAttribute('src') == '../../img/favorito_2.png'){
-        favorito.setAttribute('src', '../../img/favorito.png');
+    if(favorito.getAttribute('src') == '../img/favorito_2.png'){
+        favorito.setAttribute('src', '../img/favorito.png');
     } else {
-        favorito.setAttribute('src', '../../img/favorito_2.png');
+        favorito.setAttribute('src', '../img/favorito_2.png');
     }
 }
 
 function setFavorito(){
     var favorito = document.getElementById("add-favoritos");
-    favorito.setAttribute('src', '../../img/favorito_2.png');
+    favorito.setAttribute('src', '../img/favorito_2.png');
+}
+
+function notFavorito(){
+    var favorito = document.getElementById("add-favoritos");
+    favorito.setAttribute('src', '../img/favorito.png');
 }
 

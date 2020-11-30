@@ -118,4 +118,12 @@ class CanaisTable extends Table
         return $query->first();
     }
 
+    public function pesquisa($query)
+    {
+        $query = $this->find()
+                      ->select()
+                      ->where(['nome LIKE' => '%'.$query.'%'])->orWhere(['categoria LIKE' =>'%'.$query.'%']);
+        return $query->all();
+    }
+
 }
