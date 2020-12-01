@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
+    <?= $this->Html->css('plugins/toastr/toastr.css') ?>
     <?= $this->Html->css('owl.carousel.min.css') ?>
     <?= $this->Html->css('player.css') ?>
     <?= $this->Html->css('index.css') ?>
@@ -257,6 +258,11 @@
             });
         }
     </script>
+
+    <!-- Toastr -->
+    <?= $this->Html->script('plugins/toastr/toastr.min.js') ?>
+    <!-- Flash render -->
+    <?= $this->Flash->render() ?>
 
 </body>
 

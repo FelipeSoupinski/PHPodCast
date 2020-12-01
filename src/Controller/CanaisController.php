@@ -82,12 +82,19 @@ class CanaisController extends AppController
             $imgUpload = $this->request->getData()['imagem'];
             $imgUpload['name'] = $this->Canais->slugUploadImgRed($imgUpload['name']);
 
-            $canai->imagem = $imgUpload['name'];
+            if($imgUpload['name'] != ''){
+                $canai->imagem = $imgUpload['name'];
+            } else {
+                $canai->imagem = $imagem;
+            }
 
             if ($this->Canais->save($canai)) {
-                $destino = WWW_ROOT . "files" . DS . "canais" . DS . $canai->id . DS;
-                $this->Canais->uploadImgRed($imgUpload, $destino, 270, 270);
-                $this->Canais->deleteFile($destino, $imagem, $canai->imagem);
+
+                if($imgUpload['name'] != ''){
+                    $destino = WWW_ROOT . "files" . DS . "canais" . DS . $canai->id . DS;
+                    $this->Canais->uploadImgRed($imgUpload, $destino, 270, 270);
+                    $this->Canais->deleteFile($destino, $imagem, $canai->imagem);
+                }
 
                 $this->Flash->success(__('Canal salvo com sucesso.'));
 
