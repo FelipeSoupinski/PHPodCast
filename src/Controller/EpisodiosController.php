@@ -102,8 +102,17 @@ class EpisodiosController extends AppController
         $usuario = $usuariosTable->get($id);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $arquivo_old = $episodio->arquivo;
             $episodio = $this->Episodios->patchEntity($episodio, $this->request->getData());
+            $episodio->arquivo = $this->Episodios->slugUpload($this->request->getData()['arquivo']['name']);
+            
             if ($this->Episodios->save($episodio)) {
+                $destino = WWW_ROOT."files".DS."canais".DS.$episodio->canai_id.DS."episodios".DS.$episodio->id.DS;
+                $arquivo = $this->request->getData()['arquivo'];
+                $arquivo['name'] = $episodio->arquivo;
+                $this->Episodios->upload($arquivo, $destino);
+                $this->Episodios->deleteArquivo($destino, $arquivo_old);
+
                 $this->Flash->success(__('O episódio foi salvo.'));
 
                 return $this->redirect(['controller' => 'Canais', 'action' => 'meucanal']);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Nov-2020 às 04:31
+-- Generation Time: 30-Nov-2020 às 21:23
 -- Versão do servidor: 10.1.35-MariaDB
 -- versão do PHP: 7.2.9
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `phpodcast`
 --
-CREATE DATABASE IF NOT EXISTS `phpodcast` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `phpodcast`;
 
 -- --------------------------------------------------------
 
@@ -30,7 +28,6 @@ USE `phpodcast`;
 -- Estrutura da tabela `canais`
 --
 
-DROP TABLE IF EXISTS `canais`;
 CREATE TABLE `canais` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -59,7 +56,6 @@ INSERT INTO `canais` (`id`, `nome`, `categoria`, `descricao`, `imagem`, `usuario
 -- Estrutura da tabela `episodios`
 --
 
-DROP TABLE IF EXISTS `episodios`;
 CREATE TABLE `episodios` (
   `id` int(11) NOT NULL,
   `titulo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -91,7 +87,6 @@ INSERT INTO `episodios` (`id`, `titulo`, `descricao`, `canai_id`, `data`, `arqui
 -- Estrutura da tabela `estatisticas`
 --
 
-DROP TABLE IF EXISTS `estatisticas`;
 CREATE TABLE `estatisticas` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -116,12 +111,19 @@ INSERT INTO `estatisticas` (`id`, `nome`, `data`, `canai_id`, `total_ouvintes`, 
 -- Estrutura da tabela `favoritos`
 --
 
-DROP TABLE IF EXISTS `favoritos`;
 CREATE TABLE `favoritos` (
   `id` int(11) NOT NULL,
   `episodio_id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Extraindo dados da tabela `favoritos`
+--
+
+INSERT INTO `favoritos` (`id`, `episodio_id`, `usuario_id`) VALUES
+(4, 3, 1),
+(6, 7, 1);
 
 -- --------------------------------------------------------
 
@@ -129,7 +131,6 @@ CREATE TABLE `favoritos` (
 -- Estrutura da tabela `usuarios`
 --
 
-DROP TABLE IF EXISTS `usuarios`;
 CREATE TABLE `usuarios` (
   `id` int(11) NOT NULL,
   `nome` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -200,7 +201,7 @@ ALTER TABLE `episodios`
 -- AUTO_INCREMENT for table `favoritos`
 --
 ALTER TABLE `favoritos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `usuarios`

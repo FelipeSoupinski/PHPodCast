@@ -37,4 +37,11 @@ class DeleteArqBehavior extends Behavior
             $file->delete($destino . $arqAntigo);
         }
     }
+
+    public function deleteArquivo($destino, $arquivo)
+    {
+        $file = new File($destino . $arquivo);
+        $file->delete($destino . $arquivo);
+    }
+
 }
