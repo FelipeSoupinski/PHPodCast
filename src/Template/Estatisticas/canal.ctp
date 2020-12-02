@@ -3,7 +3,8 @@
 <?= $this->Html->css('estatisticas.css')?>
 
 <script>
-    ouvintes = <?= $estatistica->total_ouvintes?>
+    ouvintes = <?= $estatistica->total_ouvintes?> ;
+    favoritos = <?= $favoritos ?> ;
 </script>
 
 <main>

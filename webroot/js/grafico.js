@@ -3,8 +3,7 @@ function getRandom(min, max) {
 }
 
 
-inscritos = getRandom(300, 800)
-favoritos = getRandom(200, 750)
+inscritos = getRandom(20, 40)
 a = [ouvintes, favoritos, inscritos]
 console.log(a)
 

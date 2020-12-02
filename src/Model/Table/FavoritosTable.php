@@ -110,14 +110,18 @@ class FavoritosTable extends Table
     }
 
     public function getQtdsFavoritos($canal_id) {
-        $query = $this->find();
-        $query->select([$query->func()->count('Favoritos.usuario_id')]);
-        $query->innerJoinWith('Episodios', function ($q) {
-             return $q->where(['Episodios.id' => 'Favoritos.episodio_id']);
-         });
-        $query->where(['Episodios.canai_id' => $canal_id]);
- 
-        echo($query); 
+        $query = $this->find()
+                      ->select()
+                      ->join([
+                            'Episodios' => [
+                            'table' => 'Episodios',
+                            'type' => 'INNER',
+                            'conditions' => 'Episodios.id = episodio_id'
+                            ]
+                        ])
+                      ->where(['canai_id' => $canal_id]);
+
+        return $query->all();
     }
 
 }

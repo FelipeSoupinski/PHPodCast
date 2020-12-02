@@ -16,14 +16,18 @@ class EstatisticasController extends AppController
 
     public function canal()
     {
+        $favoritosTable = TableRegistry::getTableLocator()->get('Favoritos');
         $user = $this->Auth->user('id');
         $canal = $this->Estatisticas->Canais->getCanal($user);
+        $favoritos = $favoritosTable->getQtdsFavoritos($canal->id);
         $estatistica = $this->Estatisticas->getEstatisticas($canal->id);
 
         $usuariosTable = TableRegistry::getTableLocator()->get('Usuarios');
         $usuario = $usuariosTable->get($user);
 
-        $this->set(compact('estatistica', 'usuario'));
+        $favoritos = sizeof($favoritos);
+
+        $this->set(compact('estatistica', 'usuario', 'favoritos'));
     }
 
     /**
