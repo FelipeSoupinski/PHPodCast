@@ -1,3 +1,15 @@
+# Observações
+
+> Repositório do projeto PodcastPlay do grupo PHPodcast
+> Atividade avaliativa da disciplina de Programação para Web 2020.2
+
+Para rodar a aplicação é necessário tem um servidor web php instalado. Nós utilizamos o Xampp.
+Após isso, é preciso criar um projeto CakePHP versão 3.8 
+Depois disso, clonar o projeto deste repositório, copiar e colar por cima do projeto inicial criado anteriormente.
+Isto acontece por causa dos arquivos presentes no arquivo .gitignore
+Um banco de dados teste está disponibilizado em config/migrations/phpodcast.sql
+Após criado o banco, configure-o em config/app.php na parte de Datasources
+
 # CakePHP Application Skeleton
 
 [![Build Status](https://img.shields.io/travis/cakephp/app/master.svg?style=flat-square)](https://travis-ci.org/cakephp/app)
