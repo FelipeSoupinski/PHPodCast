@@ -46,4 +46,10 @@ class FavoritosController extends AppController
             $this->Favoritos->delete($favorito);
         }
     }
+    public function teste() {
+        $id = 6;
+        $favoritos = $this->Favoritos->getQtdsFavoritos($id);
+        echo $favoritos;
+        $this->set(compact('favoritos'));
+    }
 }
