@@ -1,7 +1,7 @@
 # Observações
 
-> Repositório do projeto PodcastPlay do grupo PHPodcast
-> Atividade avaliativa da disciplina de Programação para Web 2020.2
+### Repositório do projeto PodcastPlay do grupo PHPodcast
+### Atividade avaliativa da disciplina de Programação para Web 2020.2
 
 Para rodar a aplicação é necessário tem um servidor web php instalado. Nós utilizamos o Xampp.
 Após isso, é preciso criar um projeto CakePHP versão 3.8 
